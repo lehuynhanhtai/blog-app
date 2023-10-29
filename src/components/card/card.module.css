@@ -41,7 +41,7 @@
   text-overflow: ellipsis;
   line-height: 25px;
   -webkit-line-clamp: 4;
-  height: 100px;
+  height: max-content;
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
