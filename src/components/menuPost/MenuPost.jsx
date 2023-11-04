@@ -9,7 +9,13 @@ const MenuPost = ({ withImage }) => {
       <Link href="/" className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image
+              src="/p1.jpeg"
+              alt=""
+              priority={true}
+              fill
+              className={styles.image}
+            />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -28,7 +34,13 @@ const MenuPost = ({ withImage }) => {
       <Link href="/" className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image
+              src="/p1.jpeg"
+              alt=""
+              fill
+              priority={true}
+              className={styles.image}
+            />
           </div>
         )}
         <div className={styles.textContainer}>

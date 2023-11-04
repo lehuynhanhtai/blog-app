@@ -6,7 +6,13 @@ const Card = () => {
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.imageContainer}>
-        <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+        <Image
+          src="/p1.jpeg"
+          alt=""
+          fill
+          priority={false}
+          className={styles.image}
+        />
       </Link>
       <div className={styles.textContainer}>
         <div className={styles.detail}>
