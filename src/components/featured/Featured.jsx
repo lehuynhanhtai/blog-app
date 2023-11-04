@@ -13,9 +13,9 @@ const Featured = () => {
           <Image
             src="/p1.jpeg"
             alt=""
-            loading="eager"
             priority={true}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
             className={styles.image}
           />
         </div>

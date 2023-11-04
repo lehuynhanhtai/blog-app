@@ -20,7 +20,8 @@ const SinglePage = () => {
                 src="/p1.jpeg"
                 alt=""
                 fill
-                priority={false}
+                priority={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
                 className={styles.avatar}
               />
             </div>
@@ -35,7 +36,8 @@ const SinglePage = () => {
             src="/p1.jpeg"
             alt=""
             fill
-            priority={false}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+            priority={true}
             className={styles.image}
           />
         </div>

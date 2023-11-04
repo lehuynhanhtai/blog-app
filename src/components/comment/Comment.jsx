@@ -21,6 +21,8 @@ const Comment = () => {
           <Image
             className={styles.image}
             src="/p1.jpeg"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
             alt=""
             width={50}
             height={50}
@@ -37,6 +39,8 @@ const Comment = () => {
           <Image
             className={styles.image}
             src="/p1.jpeg"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
             alt=""
             width={50}
             height={50}

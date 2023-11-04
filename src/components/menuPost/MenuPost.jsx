@@ -14,6 +14,7 @@ const MenuPost = ({ withImage }) => {
               alt=""
               priority={true}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
               className={styles.image}
             />
           </div>
@@ -38,6 +39,7 @@ const MenuPost = ({ withImage }) => {
               src="/p1.jpeg"
               alt=""
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
               priority={true}
               className={styles.image}
             />

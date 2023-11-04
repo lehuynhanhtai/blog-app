@@ -10,7 +10,8 @@ const Card = () => {
           src="/p1.jpeg"
           alt=""
           fill
-          priority={false}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+          priority={true}
           className={styles.image}
         />
       </Link>
