@@ -4,6 +4,7 @@ import { Open_Sans } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import ThemeProvider from "@/providers/ThemeProvider";
+import BackToTop from "@/components/btnTopPage/BackToTop";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
               <div className="wrapper">
                 <Navbar />
                 {children}
+                <BackToTop />
                 <Footer />
               </div>
             </div>
