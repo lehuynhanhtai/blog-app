@@ -2,18 +2,17 @@
 import { useRouter } from "next/navigation";
 import styles from "./loginPage.module.css";
 import { signIn, useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 const LoginPage = () => {
   const { status } = useSession();
   const route = useRouter();
 
-  if (status === "loading") {
-    return <div className={styles.loading}>Loading...</div>;
-  }
-
-  if (status === "authenticated") {
-    route.push("/");
-  }
+  useEffect(() => {
+    if (status === "authenticated") {
+      route.push("/");
+    }
+  }, [status, route]);
 
   return (
     <>
