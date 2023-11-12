@@ -17,7 +17,7 @@ const CategoryList = () => {
           <Link
             href="/blog?cat=style"
             className={`${styles.category} ${styles[item.title]}`}
-            key={item._id}
+            key={item.id}
           >
             {item.img && (
               <Image
