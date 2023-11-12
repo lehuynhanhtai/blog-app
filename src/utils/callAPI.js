@@ -1,12 +1,14 @@
+import axios from "axios";
+
 const url = "http://localhost:3000";
 
 export const findAllCategories = async () => {
-  const res = await fetch(url + "/api/categories", {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed");
+  try {
+    const response = await axios.get(url + "/api/categories");
+    return response.data; // Dữ liệu từ API sẽ được trả về ở đây
+  } catch (error) {
+    // Xử lý lỗi ở đây nếu có
+    console.error("Error fetching data:", error);
+    throw error;
   }
-
-  return res.json();
 };

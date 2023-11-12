@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npx prisma generate && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,6 +12,7 @@
     "@ant-design/icons": "^5.2.6",
     "@auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^5.5.2",
+    "axios": "^1.6.1",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "mongodb": "^6.2.0",

@@ -1,19 +1,27 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { findAllCategories } from "@/utils/callAPI";
 
-// Call API
-
-const data = await findAllCategories();
-
 const CategoryList = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    // Kiểm tra nếu dữ liệu rỗng thì gọi findAllCategories
+    if (categories.length === 0) {
+      findAllCategories().then((data) => {
+        setCategories(data);
+      });
+    }
+  }, [categories]);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
-        {data?.map((item) => (
+        {categories?.map((item) => (
           <Link
             href="/blog?cat=style"
             className={`${styles.category} ${styles[item.title]}`}
