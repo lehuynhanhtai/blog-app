@@ -2,11 +2,12 @@
 import React from "react";
 import styles from "./featured.module.css";
 import Image from "next/image";
+import Skeleton from "react-loading-skeleton";
 const Featured = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        <b>Hey, lama dev here!</b> Discover my stories and creative ideas.
+        Hey, lama dev here! Discover my stories and creative ideas.
       </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>

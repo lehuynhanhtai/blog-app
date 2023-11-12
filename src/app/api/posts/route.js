@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const categories = await prisma.category.findMany({
+    const posts = await prisma.post.findMany({
       // Bỏ qua bất kỳ điều kiện nào, lấy tất cả dữ liệu
     });
 
-    if (categories.length > 0) {
-      return new NextResponse(JSON.stringify(categories, { status: 200 }));
+    if (posts.length > 0) {
+      return new NextResponse(JSON.stringify(posts, { status: 200 }));
     } else {
       return new NextResponse(
         JSON.stringify({ message: "No categories found!" }, { status: 404 })

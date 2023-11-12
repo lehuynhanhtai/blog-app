@@ -12,3 +12,13 @@ export const findAllCategories = async () => {
     throw error;
   }
 };
+
+export const findAllPosts = async () => {
+  try {
+    const response = await axios.get(url + "api/posts");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
