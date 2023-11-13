@@ -21,9 +21,11 @@ a {
 }
 
 .dark {
-  --bg: #0f172a;
+  /* --bg: #0f172a; */
+  --bg: #1a0d05;
   --textColor: #ddd;
-  --softBg: #1f273a;
+  /* --softBg: #1f273a; */
+  --softBg: #3c2111;
   --softTextColor: #a6a6a6;
 }
 
