@@ -1,14 +1,26 @@
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
 
-export const GET = async () => {
+export const GET = async (req) => {
+  const { searchParams } = new URL(req.url);
+  const page = parseInt(searchParams.get("page")) || 1; // Chuyển đổi thành số và mặc định là 1 nếu không có giá trị
+
+  const pageSize = 2; // Số lượng bài viết mỗi trang
+  const query = {
+    take: pageSize,
+    skip: pageSize * (page - 1), // Bỏ qua số lượng bài viết phù hợp với trang trước đó
+  };
+
   try {
-    const posts = await prisma.post.findMany({
-      // Bỏ qua bất kỳ điều kiện nào, lấy tất cả dữ liệu
-    });
+    const [posts, count] = await prisma.$transaction([
+      prisma.post.findMany(query),
+      prisma.post.count(),
+    ]);
 
     if (posts.length > 0) {
-      return new NextResponse(JSON.stringify(posts, { status: 200 }));
+      return new NextResponse(
+        JSON.stringify({ page, posts, count }, { status: 200 })
+      );
     } else {
       return new NextResponse(
         JSON.stringify({ message: "No categories found!" }, { status: 404 })

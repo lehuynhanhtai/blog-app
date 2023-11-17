@@ -13,9 +13,9 @@ export const findAllCategories = async () => {
   }
 };
 
-export const findAllPosts = async () => {
+export const findAllPosts = async (page) => {
   try {
-    const response = await axios.get(url + "api/posts");
+    const response = await axios.get(url + `/api/posts?page=${page}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
