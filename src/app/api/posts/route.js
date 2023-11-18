@@ -16,10 +16,11 @@ export const GET = async (req) => {
       prisma.post.findMany(query),
       prisma.post.count(),
     ]);
+    const totalPage = Math.ceil(count / pageSize);
 
     if (posts.length > 0) {
       return new NextResponse(
-        JSON.stringify({ page, posts, count }, { status: 200 })
+        JSON.stringify({ page, posts, count, totalPage }, { status: 200 })
       );
     } else {
       return new NextResponse(

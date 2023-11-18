@@ -4,13 +4,12 @@ import styles from "./cardList.module.css";
 import Pagination from "../pagination/Pagination";
 import Card from "../card/Card";
 import { findAllPosts } from "@/utils/callAPI";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const CardList = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
-  const [count, setCount] = useState();
+  const [totalPage, setTotalPage] = useState();
   const router = useRouter();
 
   useEffect(() => {
@@ -18,13 +17,12 @@ const CardList = () => {
       .then((data) => {
         setData(data.posts);
         setPage(data.page);
-        setCount(data.count);
+        setTotalPage(data.totalPage);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, [page]);
-
   const handleNext = (event) => {
     event.preventDefault();
     const newPage = page + 1;
@@ -55,12 +53,17 @@ const CardList = () => {
       <div className={styles.pagination}>
         <button
           className={styles.button}
+          disabled={page === 1}
           onClick={(event) => handlePrev(event)}
         >
           Previous
         </button>
+        <h3>
+          {page} / {totalPage}
+        </h3>
         <button
           className={styles.button}
+          disabled={page === totalPage}
           onClick={(event) => handleNext(event)}
         >
           Next
