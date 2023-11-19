@@ -5,24 +5,27 @@ import Pagination from "../pagination/Pagination";
 import Card from "../card/Card";
 import { findAllPosts } from "@/utils/callAPI";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const CardList = () => {
+const CardList = (props) => {
+  const { cat } = props;
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState();
   const router = useRouter();
-
   useEffect(() => {
-    findAllPosts(page)
+    findAllPosts(page, cat)
       .then((data) => {
         setData(data.posts);
         setPage(data.page);
         setTotalPage(data.totalPage);
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [page]);
+  }, [page, cat]);
+
   const handleNext = (event) => {
     event.preventDefault();
     const newPage = page + 1;
@@ -43,7 +46,6 @@ const CardList = () => {
 
   return (
     <div className={styles.container}>
-      <h2>{page} current</h2>
       <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.posts}>
         {data?.map((item) => {

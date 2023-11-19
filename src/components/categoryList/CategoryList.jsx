@@ -37,7 +37,7 @@ const CategoryList = () => {
         <div className={styles.categories}>
           {categories?.map((item) => (
             <Link
-              href="/blog?cat=style"
+              href={`/blog?cat=${item.slug}`}
               className={`${styles.category} ${styles[item.title]}`}
               key={item.id}
             >
