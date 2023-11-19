@@ -13,11 +13,14 @@ export const findAllCategories = async () => {
   }
 };
 
-export const findAllPosts = async (page) => {
+export const findAllPosts = async (page, cat) => {
   try {
-    const response = await axios.get(url + `/api/posts?page=${page}`, {
-      cache: "no-store",
-    });
+    const response = await axios.get(
+      url + `/api/posts?page=${page}&cat=${cat || ""}`,
+      {
+        cache: "no-store",
+      }
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
