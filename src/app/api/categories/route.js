@@ -3,9 +3,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const categories = await prisma.category.findMany({
-      // Bỏ qua bất kỳ điều kiện nào, lấy tất cả dữ liệu
-    });
+    const categories = await prisma.category.findMany({});
 
     if (categories.length > 0) {
       return new NextResponse(JSON.stringify(categories, { status: 200 }));

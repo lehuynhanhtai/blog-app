@@ -18,7 +18,7 @@ const CategoryList = () => {
           setLoading(false); // Đánh dấu đã load xong
         } else {
           setTimeout(() => {
-            setCategories(data);
+            setCategories(data.slice(0, 6));
             setLoading(false); // Đánh dấu đã load xong
           }, 500);
         }
@@ -28,7 +28,7 @@ const CategoryList = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Popular Categories</h1>
+      <h1 className={styles.title}>Danh mục phổ biến</h1>
       {loading ? (
         <l-bouncy size="45" speed="1.75" color="#aaa" bg-opacity=".1" />
       ) : categories.length === 0 ? (
@@ -38,7 +38,7 @@ const CategoryList = () => {
           {categories?.map((item) => (
             <Link
               href={`/blog?cat=${item.slug}`}
-              className={`${styles.category} ${styles[item.title]}`}
+              className={`${styles.category} `}
               key={item.id}
             >
               {item.img && (
@@ -50,7 +50,7 @@ const CategoryList = () => {
                   className={styles.image}
                 />
               )}
-              {item.title}
+              {item.name}
             </Link>
           ))}
         </div>

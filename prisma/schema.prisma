@@ -60,7 +60,7 @@ model VerificationToken {
 model Category {
   id    String  @id @default(cuid()) @map("_id")
   slug  String  @unique
-  title String
+  name  String
   img   String?
   Posts Post[]
 }
@@ -73,6 +73,7 @@ model Post {
   desc      String
   img       String?
   views     Int       @default(0)
+  cateTitle String
   catSlug   String
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
