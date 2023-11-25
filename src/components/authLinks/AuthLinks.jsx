@@ -12,7 +12,7 @@ const AuthLinks = () => {
     <>
       {status === "unauthenticated" ? (
         <Link href="/login" className={styles.link}>
-          Login
+          Đăng nhập
         </Link>
       ) : (
         <>
@@ -30,12 +30,12 @@ const AuthLinks = () => {
         <div className={styles.line}></div>
       </div>
       {open && (
-        <div className={styles.responsiveMenu}>
-          <Link href="/">Homepage</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+        <div className={styles.responsiveMenu} onClick={() => setOpen(!open)}>
+          <Link href="/">Trang chủ</Link>
+          <Link href="/about">Về SBLOG</Link>
+          <Link href="/contact">Liên hệ</Link>
           {status === "unauthenticated" ? (
-            <Link href="/login">Login</Link>
+            <Link href="/login">Đăng nhập</Link>
           ) : (
             <>
               <Link href="/write">Write</Link>

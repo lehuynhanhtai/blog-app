@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const GET = async (req) => {
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get("page")) || 1; // Chuyển đổi thành số và mặc định là 1 nếu không có giá trị
-  const cat = searchParams.get("cat"); // Chuyển đổi thành số và mặc định là 1 nếu không có giá trị
+  const cat = searchParams.get("cat");
 
   const pageSize = 2; // Số lượng bài viết mỗi trang
   const query = {

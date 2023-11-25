@@ -3,7 +3,7 @@ import styles from "./footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
 const Footer = () => {
-  return(
+  return (
     <div className={styles.container}>
       <div className={styles.info}>
         <div className={styles.logo}>
@@ -26,10 +26,10 @@ const Footer = () => {
       <div className={styles.links}>
         <div className={styles.list}>
           <span className={styles.listTitle}>Links</span>
-          <Link href="/">Homepage</Link>
+          <Link href="/">Trang chủ</Link>
           <Link href="/">Blog</Link>
-          <Link href="/">About</Link>
-          <Link href="/">Contact</Link>
+          <Link href="/">Về SBLOG</Link>
+          <Link href="/">Liên hệ</Link>
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Footer;

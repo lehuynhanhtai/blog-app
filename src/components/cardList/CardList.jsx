@@ -5,7 +5,6 @@ import Pagination from "../pagination/Pagination";
 import Card from "../card/Card";
 import { findAllPosts } from "@/utils/callAPI";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const CardList = (props) => {
   const { cat } = props;
@@ -19,7 +18,6 @@ const CardList = (props) => {
         setData(data.posts);
         setPage(data.page);
         setTotalPage(data.totalPage);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

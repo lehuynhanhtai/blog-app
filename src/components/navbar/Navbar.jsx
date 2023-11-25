@@ -19,13 +19,13 @@ const Navbar = () => {
       <div className={styles.links}>
         <ThemeToggle />
         <Link href="/" className={styles.link}>
-          HomePage
+          Trang chủ
         </Link>
         <Link href="/contact" className={styles.link}>
-          Contact
+          Liên hệ
         </Link>
         <Link href="/about" className={styles.link}>
-          About
+          Về SBLOG
         </Link>
         <AuthLinks />
       </div>
