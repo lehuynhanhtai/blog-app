@@ -5,7 +5,6 @@ import { findAllCategories } from "@/utils/callAPI";
 
 const MenuCategories = async () => {
   const data = await findAllCategories();
-  console.log(data);
   return (
     <div className={styles.categoryList}>
       {data.map((item) => (
