@@ -4,6 +4,9 @@ import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { findAllCategories } from "@/utils/callAPI";
+import { bouncy } from "ldrs";
+
+bouncy.register();
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
@@ -20,7 +23,7 @@ const CategoryList = () => {
           setTimeout(() => {
             setCategories(data.slice(0, 6));
             setLoading(false); // Đánh dấu đã load xong
-          }, 500);
+          }, 100);
         }
       });
     }
@@ -30,7 +33,9 @@ const CategoryList = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Danh mục phổ biến</h1>
       {loading ? (
-        <l-bouncy size="45" speed="1.75" color="#aaa" bg-opacity=".1" />
+        <div className={styles.loadingg}>
+          <l-bouncy size="45" speed="1" color="#aaa" bg-opacity=".1" />
+        </div>
       ) : categories.length === 0 ? (
         <p>Không có dữ liệu</p>
       ) : (

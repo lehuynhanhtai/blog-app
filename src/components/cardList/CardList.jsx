@@ -44,7 +44,7 @@ const CardList = (props) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Recent Posts</h1>
+      <h1 className={styles.title}>Bài viết gần đây</h1>
       <div className={styles.posts}>
         {data?.map((item) => {
           return <Card item={item} key={item.id} />;

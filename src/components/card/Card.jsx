@@ -21,22 +21,13 @@ const Card = ({ item }) => {
           <span className={styles.date}>
             {item.createdAt.substring(0, 10)} -{" "}
           </span>
-          <span className={styles.category}>{item.catSlug}</span>
+          <span className={styles.category}>{item.cateTitle}</span>
         </div>
 
         <Link href="/">
           <h2>{item.title}</h2>
         </Link>
-        <p className={styles.desc}>
-          Next.js là một open-source React front-end framework được bổ sung các
-          tính năng như Server Side Rendering (SSR) và Static Site Generation
-          (SSG). Next.js được xây dựng dựa trên thư viện React có nghĩa là
-          Next.js lấy những lợi thế của React và bổ sung các tính năng. Next.js
-          là một open-source React front-end framework được bổ sung các tính
-          năng như Server Side Rendering (SSR) và Static Site Generation (SSG).
-          Next.js được xây dựng dựa trên thư viện React có nghĩa là Next.js lấy
-          những lợi thế của React và bổ sung các tính năng.
-        </p>
+        <p className={styles.desc}>{item.desc}</p>
         <Link href="/" className={styles.link}>
           Read More
         </Link>
