@@ -24,11 +24,11 @@ const Card = ({ item }) => {
           <span className={styles.category}>{item.cateTitle}</span>
         </div>
 
-        <Link href="/">
+        <Link href={`/posts/${item.slug}`}>
           <h2>{item.title}</h2>
         </Link>
         <p className={styles.desc}>{item.desc}</p>
-        <Link href="/" className={styles.link}>
+        <Link href={`/posts/${item.slug}`} className={styles.link}>
           Read More
         </Link>
       </div>

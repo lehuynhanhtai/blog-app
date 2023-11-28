@@ -27,3 +27,15 @@ export const findAllPosts = async (page, cat) => {
     throw error;
   }
 };
+
+export const findOnePost = async (slug) => {
+  try {
+    const response = await axios.get(url + `/api/posts/${slug}`, {
+      cache: "no-store",
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};

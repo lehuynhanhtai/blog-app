@@ -3,21 +3,28 @@ import styles from "./singlePage.module.css";
 import Image from "next/image";
 import Menu from "@/components/menu/Menu";
 import Comment from "@/components/comment/Comment";
+import { findOnePost } from "@/utils/callAPI";
+import Link from "next/link";
 
-const SinglePage = () => {
+const SinglePage = async ({ params }) => {
+  const { slug } = params;
+  const data = await findOnePost(slug);
+  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1>
-            By installing this component and writing only a little bit of CSS
-            you can obtain this: Note: You should write your own css to obtain
-            this UI. This package do not provide any css.
-          </h1>
+          <Link
+            href={`/blog?cat=${data.catSlug}`}
+            style={{ textTransform: "capitalize" }}
+          >
+            {data.cateTitle}
+          </Link>
+          <h1>{data.title}</h1>
           <div className={styles.user}>
             <div className={styles.userImageContainer}>
               <Image
-                src="/p1.jpeg"
+                src={data.user.image}
                 alt=""
                 fill
                 priority={true}
@@ -25,15 +32,18 @@ const SinglePage = () => {
                 className={styles.avatar}
               />
             </div>
+
             <div className={styles.userTextContainer}>
-              <span className={styles.username}>ATKill</span>
-              <span className={styles.date}>01.01.2024</span>
+              <span className={styles.username}>{data?.user.name}</span>
+              <span className={styles.date}>
+                {data.createdAt.substring(0, 10)}
+              </span>
             </div>
           </div>
         </div>
         <div className={styles.imageContainer}>
           <Image
-            src="/p1.jpeg"
+            src={data.img}
             alt=""
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
@@ -44,19 +54,7 @@ const SinglePage = () => {
       </div>
       <div className={styles.content}>
         <div className={styles.post}>
-          <div className={styles.description}>
-            <p>
-              By installing this component and writing only a little bit of CSS
-              you can obtain this: Note: You should write your own css to obtain
-              this UI. This package do not provide any css.
-            </p>
-            <h2>day la tieu de</h2>
-            <p>
-              By installing this component and writing only a little bit of CSS
-              you can obtain this: Note: You should write your own css to obtain
-              this UI. This package do not provide any css.
-            </p>
-          </div>
+          <div className={styles.description}>{data.desc}</div>
           <div className={styles.comment}>
             <Comment />
           </div>
