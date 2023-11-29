@@ -13,6 +13,7 @@ const Comment = () => {
           <textarea
             placeholder="Hãy viết một bình luận..."
             className={styles.input}
+            style={{ resize: "none" }}
           />
           <button className={styles.button}>Gửi</button>
         </div>

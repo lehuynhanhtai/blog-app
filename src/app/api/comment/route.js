@@ -1,3 +1,4 @@
+import { authOptions } from "@/utils/auth";
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
 
@@ -30,7 +31,7 @@ export const GET = async (req) => {
 };
 
 export const POST = async (req) => {
-  const session = await getAuthSession();
+  const session = await authOptions();
 
   if (!session) {
     return new NextResponse(
