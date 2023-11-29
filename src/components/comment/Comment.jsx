@@ -7,14 +7,17 @@ const Comment = () => {
   const status = "authenticated";
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Comment</h1>
+      <h1 className={styles.title}>Bình luận</h1>
       {status === "authenticated" ? (
         <div className={styles.write}>
-          <textarea placeholder="Wite a comment..." className={styles.input} />
-          <button className={styles.button}>Send</button>
+          <textarea
+            placeholder="Hãy viết một bình luận..."
+            className={styles.input}
+          />
+          <button className={styles.button}>Gửi</button>
         </div>
       ) : (
-        <Link href="/login">Login to write a comment</Link>
+        <Link href="/login">Bạn hãy đăng nhập để bình luận.</Link>
       )}
       <div className={styles.comments}>
         <div className={styles.comment}>

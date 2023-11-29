@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
@@ -6,9 +5,9 @@ import Link from "next/link";
 const Card = ({ item }) => {
   return (
     <div className={styles.container}>
-      <Link href="/" className={styles.imageContainer}>
+      <Link href={`/posts/${item.slug}`} className={styles.imageContainer}>
         <Image
-          src="/p1.jpeg"
+          src={item.img}
           alt=""
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
@@ -21,7 +20,9 @@ const Card = ({ item }) => {
           <span className={styles.date}>
             {item.createdAt.substring(0, 10)} -{" "}
           </span>
-          <span className={styles.category}>{item.cateTitle}</span>
+          <Link href={`/blog?cat=${item.catSlug}`} className={styles.category}>
+            {item.cateTitle}
+          </Link>
         </div>
 
         <Link href={`/posts/${item.slug}`}>
