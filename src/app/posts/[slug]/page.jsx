@@ -9,7 +9,7 @@ import Link from "next/link";
 const SinglePage = async ({ params }) => {
   const { slug } = params;
   const data = await findOnePost(slug);
-  console.log(data);
+
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
