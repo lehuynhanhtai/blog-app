@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 30px;
+  margin-bottom: 50px;
 }
 
 .input {
@@ -20,12 +21,12 @@
   background: none;
   color: var(--softTextColor);
   border: none;
+  border-bottom: 1px solid;
+  border-end-end-radius: 15px;
 }
 
 .input:focus {
   outline: none;
-  border-bottom: 1px solid;
-  border-end-end-radius: 20px;
 }
 
 .button {
@@ -43,16 +44,13 @@
 }
 
 .comment {
-  margin-bottom: 15px;
-  display: flex;
-  gap: 20px;
+  margin-bottom: 50px;
 }
 
 .user {
   display: flex;
-  align-items: center;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .image {
@@ -63,7 +61,6 @@
 .userInfo {
   display: flex;
   flex-direction: column;
-  gap: 5px;
   color: var(--softTextColor);
 }
 
@@ -72,10 +69,20 @@
 }
 
 .date {
-  font-size: 14px;
+  font-size: 13px;
+  margin-left: 10px;
+  opacity: 0.6;
 }
 
 .desc {
   font-size: 18px;
   font-weight: 300;
+}
+
+.vote {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  margin-top: 15px;
 }

@@ -17,6 +17,7 @@ const SinglePage = async ({ params }) => {
           <Link
             href={`/blog?cat=${data.catSlug}`}
             style={{ textTransform: "capitalize" }}
+            as="style"
           >
             {data.cateTitle}
           </Link>
@@ -56,7 +57,7 @@ const SinglePage = async ({ params }) => {
         <div className={styles.post}>
           <div className={styles.description}>{data.desc}</div>
           <div className={styles.comment}>
-            <Comment />
+            <Comment postSlug={slug} />
           </div>
         </div>
         <Menu />
