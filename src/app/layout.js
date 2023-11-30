@@ -18,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vn">
+    <html lang="vi">
       <body className={font.className}>
         <AuthProvider>
           <ThemeContextProvider>
