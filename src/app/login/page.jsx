@@ -5,13 +5,20 @@ import { signIn, useSession } from "next-auth/react";
 import { useEffect } from "react";
 const LoginPage = () => {
   const { status } = useSession();
-  const route = useRouter();
+  const router = useRouter();
+  const storedRedirect = localStorage.getItem("redirectData");
 
   useEffect(() => {
-    if (status === "authenticated") {
-      route.push("/");
+    if (storedRedirect) {
+      setTimeout(() => {
+        localStorage.removeItem("redirectData");
+      }, 1000);
     }
-  }, [status, route]);
+    if (status === "authenticated") {
+      router.push(storedRedirect || "/");
+      localStorage.removeItem("redirectData");
+    }
+  }, [status, router, storedRedirect]);
 
   return (
     <>

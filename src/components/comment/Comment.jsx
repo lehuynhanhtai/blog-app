@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./comment.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import dateFormat, { masks } from "dateformat";
 import { DislikeOutlined, LikeOutlined } from "@ant-design/icons";
+import { useRouter } from "next/navigation";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -22,26 +23,60 @@ const fetcher = async (url) => {
 };
 
 const Comment = ({ postSlug }) => {
-  const { status } = useSession();
-  const { data, isLoading } = useSWR(
+  const { data, mutate, isLoading } = useSWR(
     `http://localhost:3000/api/comments?postSlug=${postSlug}`,
     fetcher
   );
+  const { status } = useSession();
+  const [desc, setDesc] = useState("");
+  const router = useRouter();
 
-  const handleSend = () => {};
+  const handleSend = async () => {
+    if (!desc) {
+      alert("Không được để rỗng, vui lòng nhập bình luận!");
+      return;
+    }
+    if (status === "authenticated") {
+      // await fetch("/api/comments", {
+      //   method: "POST",
+      //   body: JSON.stringify({ desc, postSlug }),
+      // });
+      // mutate();
+      console.log("object");
+      return;
+    }
+
+    if (status === "unauthenticated") {
+      const redirectTo = window.location.pathname;
+      localStorage.setItem("redirectData", redirectTo);
+      router.push("/login");
+      return;
+    }
+  };
+
+  const handleDelete = () => {
+    setDesc("");
+  };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Bình luận</h1>
       <div className={styles.write}>
         <textarea
+          value={desc}
           placeholder="Hãy viết một bình luận..."
           className={styles.input}
           style={{ resize: "none" }}
+          onChange={(e) => setDesc(e.target.value)}
         />
-        <button className={styles.button} onClick={handleSend}>
-          Gửi
-        </button>
+        <div className={styles.groupButton}>
+          <button className={styles.button} onClick={handleSend}>
+            Gửi
+          </button>
+          <button className={styles.button} onClick={handleDelete}>
+            Xóa
+          </button>
+        </div>
       </div>
 
       <div className={styles.comments}>

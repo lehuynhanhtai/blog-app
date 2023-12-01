@@ -8,8 +8,9 @@
 
 .categoryItem {
   padding: 10px 25px;
-  border-radius: 10px;
+  border-radius: 20px;
   font-size: 14px;
+  color: #fff;
 }
 
 .categoryItem.style {

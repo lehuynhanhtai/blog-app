@@ -22,21 +22,29 @@
   color: var(--softTextColor);
   border: none;
   border-bottom: 1px solid;
-  border-end-end-radius: 15px;
 }
 
 .input:focus {
   outline: none;
 }
 
+.groupButton {
+  display: flex;
+  gap: 10px;
+}
+
 .button {
-  padding: 16px 20px;
-  background-color: teal;
+  padding: 16px 30px;
+  background-color: rgb(1, 72, 72);
   color: white;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(2, 112, 112);
 }
 
 .comments {

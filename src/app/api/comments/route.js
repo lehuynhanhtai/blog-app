@@ -15,13 +15,7 @@ export const GET = async (req) => {
       include: { user: true },
     });
 
-    if (comments.length > 0) {
-      return new NextResponse(JSON.stringify(comments, { status: 200 }));
-    } else {
-      return new NextResponse(
-        JSON.stringify({ message: "No data found!" }, { status: 404 })
-      );
-    }
+    return new NextResponse(JSON.stringify(comments, { status: 200 }));
   } catch (error) {
     console.log(error);
     return new NextResponse(
