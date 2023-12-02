@@ -11,17 +11,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 15px;
   margin-bottom: 50px;
 }
 
+.emojiContainer {
+  position: relative;
+}
+
+.emoji {
+  position: absolute;
+  z-index: 1000;
+  top: 40px;
+  left: -170px;
+}
+
 .input {
-  padding: 10px;
   width: 100%;
   background: none;
   color: var(--softTextColor);
   border: none;
   border-bottom: 1px solid;
+  font-size: 18px;
 }
 
 .input:focus {
@@ -34,7 +45,7 @@
 }
 
 .button {
-  padding: 16px 30px;
+  padding: 10px 20px;
   background-color: rgb(1, 72, 72);
   color: white;
   font-weight: bold;
@@ -93,4 +104,11 @@
   gap: 20px;
   font-size: 18px;
   margin-top: 15px;
+}
+
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 640px) {
 }

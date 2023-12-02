@@ -11,9 +11,12 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@auth/prisma-adapter": "^1.0.6",
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "@prisma/client": "^5.5.2",
     "axios": "^1.6.1",
     "dateformat": "^5.0.3",
+    "emoji-mart": "^5.5.2",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "ldrs": "^1.0.1",

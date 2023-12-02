@@ -6,8 +6,13 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import dateFormat, { masks } from "dateformat";
-import { DislikeOutlined, LikeOutlined } from "@ant-design/icons";
+import {
+  DislikeOutlined,
+  LikeOutlined,
+  SmileOutlined,
+} from "@ant-design/icons";
 import { useRouter } from "next/navigation";
+import Picker from "@emoji-mart/react";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -29,6 +34,7 @@ const Comment = ({ postSlug }) => {
   );
   const { status } = useSession();
   const [desc, setDesc] = useState("");
+  const [open, setOpen] = useState(false);
   const router = useRouter();
 
   const handleSend = async () => {
@@ -57,17 +63,32 @@ const Comment = ({ postSlug }) => {
     setDesc("");
   };
 
+  const handleSelect = (emojiObject) => {
+    setDesc(desc + emojiObject.native);
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Bình luận</h1>
       <div className={styles.write}>
         <textarea
-          value={desc}
           placeholder="Hãy viết một bình luận..."
           className={styles.input}
           style={{ resize: "none" }}
+          value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
+        <div className={styles.emojiContainer}>
+          <SmileOutlined
+            onClick={() => setOpen(!open)}
+            style={{ fontSize: "25px" }}
+          />
+          {open && (
+            <div className={styles.emoji}>
+              <Picker onEmojiSelect={handleSelect} />
+            </div>
+          )}
+        </div>
         <div className={styles.groupButton}>
           <button className={styles.button} onClick={handleSend}>
             Gửi
