@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./comment.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -36,15 +36,6 @@ const Comment = ({ postSlug }) => {
       alert("Không được để rỗng, vui lòng nhập bình luận!");
       return;
     }
-    if (status === "authenticated") {
-      // await fetch("/api/comments", {
-      //   method: "POST",
-      //   body: JSON.stringify({ desc, postSlug }),
-      // });
-      // mutate();
-      console.log("object");
-      return;
-    }
 
     if (status === "unauthenticated") {
       const redirectTo = window.location.pathname;
@@ -52,6 +43,14 @@ const Comment = ({ postSlug }) => {
       router.push("/login");
       return;
     }
+
+    const data = await fetch("/api/comments", {
+      method: "POST",
+      body: JSON.stringify({ desc, postSlug }),
+    });
+    mutate();
+    setDesc("");
+    return data.json();
   };
 
   const handleDelete = () => {
@@ -82,7 +81,7 @@ const Comment = ({ postSlug }) => {
       <div className={styles.comments}>
         {isLoading
           ? "loading"
-          : data?.map((item) => (
+          : [...data].reverse().map((item) => (
               <div className={styles.comment} key={item.id}>
                 <div className={styles.user}>
                   {item?.user?.image && (

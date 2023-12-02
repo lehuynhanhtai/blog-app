@@ -12,7 +12,7 @@ const LoginPage = () => {
     if (storedRedirect) {
       setTimeout(() => {
         localStorage.removeItem("redirectData");
-      }, 1000);
+      }, 20000);
     }
     if (status === "authenticated") {
       router.push(storedRedirect || "/");
