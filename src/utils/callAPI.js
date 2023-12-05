@@ -39,3 +39,15 @@ export const findOnePost = async (slug) => {
     throw error;
   }
 };
+
+export const popularPosts = async () => {
+  try {
+    const response = await axios.get(url + `/api/popularposts`, {
+      cache: "no-store",
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};

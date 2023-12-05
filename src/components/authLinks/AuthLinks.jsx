@@ -32,14 +32,16 @@ const AuthLinks = () => {
             Viết bài
           </Link>
           <div className={styles.imageContainer} onClick={handleOpenDropdown}>
-            <Image
-              src="/p1.jpeg"
-              alt=""
-              priority={true}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-              className={styles.image}
-            />
+            {data?.user?.image && (
+              <Image
+                src={data.user.image}
+                alt=""
+                priority={true}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                className={styles.image}
+              />
+            )}
           </div>
         </>
       )}
@@ -48,18 +50,20 @@ const AuthLinks = () => {
         <div className={styles.menuDropdown}>
           <div className={styles.userProf}>
             <div className={styles.imageContainerProf}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                priority={true}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-                className={styles.imageUserProf}
-              />
+              {data?.user?.image && (
+                <Image
+                  src={data.user.image}
+                  alt=""
+                  priority={true}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                  className={styles.imageUserProf}
+                />
+              )}
             </div>
             <div className={styles.userInfor}>
-              <p style={{ fontWeight: 600 }}>lehuynhanhtai@gmail.com</p>
-              <p>Biệt danh: Xemgi?</p>
+              <p style={{ fontWeight: 600 }}>{data?.user?.email}</p>
+              <p>{data?.user?.name}</p>
             </div>
           </div>
           <div className={styles.menuLink} onClick={handleOpenDropdown}>
@@ -71,15 +75,15 @@ const AuthLinks = () => {
               <FormOutlined style={{ marginRight: 10 }} />
               Bài viết của tôi
             </Link>
-            <Link className={styles.linkDropdown} href="/about">
+            <Link className={styles.linkDropdown} href="/">
               <SnippetsOutlined style={{ marginRight: 10 }} />
               Nháp của tôi
             </Link>
-            <Link className={styles.linkDropdown} href="/contact">
+            <Link className={styles.linkDropdown} href="/">
               <BookOutlined style={{ marginRight: 10 }} />
               Đã lưu
             </Link>
-            <Link className={styles.linkDropdown} href="/contact">
+            <Link className={styles.linkDropdown} href="/">
               <SettingOutlined style={{ marginRight: 10 }} />
               Tùy chỉnh tài khoản
             </Link>

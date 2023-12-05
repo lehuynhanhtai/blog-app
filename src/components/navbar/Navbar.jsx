@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import AuthLinks from "../authLinks/AuthLinks";
+
 const Navbar = () => {
   return (
     <div className={styles.container}>
