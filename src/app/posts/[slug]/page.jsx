@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./singlePage.module.css";
 import Image from "next/image";
-import Menu from "@/components/menu/Menu";
 import Comment from "@/components/comment/Comment";
 import { findOnePost } from "@/utils/callAPI";
 import Link from "next/link";
+import dateFormat from "dateformat";
 
 const SinglePage = async ({ params }) => {
   const { slug } = params;
@@ -16,12 +16,12 @@ const SinglePage = async ({ params }) => {
         <div className={styles.textContainer}>
           <Link
             href={`/blog?cat=${data.catSlug}`}
-            style={{ textTransform: "capitalize" }}
+            className={styles.category}
             as="style"
           >
             {data.cateTitle}
           </Link>
-          <h1>{data.title}</h1>
+          <h1 style={{ fontSize: 45 }}>{data.title}</h1>
           <div className={styles.user}>
             <div className={styles.userImageContainer}>
               <Image
@@ -37,7 +37,7 @@ const SinglePage = async ({ params }) => {
             <div className={styles.userTextContainer}>
               <span className={styles.username}>{data?.user.name}</span>
               <span className={styles.date}>
-                {data.createdAt.substring(0, 10)}
+                {dateFormat(data.createdAt, "dd-mm-yyyy")}
               </span>
             </div>
           </div>
@@ -60,7 +60,7 @@ const SinglePage = async ({ params }) => {
             <Comment postSlug={slug} />
           </div>
         </div>
-        <Menu />
+        {/* <Menu /> */}
       </div>
     </div>
   );
