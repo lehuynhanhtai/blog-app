@@ -109,7 +109,7 @@ const Comment = ({ postSlug }) => {
                     <Link href={``}>
                       <Image
                         className={styles.image}
-                        src={item.user.image}
+                        src={item?.user?.image}
                         alt=""
                         width={50}
                         height={50}
