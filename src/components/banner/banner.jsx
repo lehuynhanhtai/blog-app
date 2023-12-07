@@ -23,8 +23,7 @@ const Banner = () => {
         }}
         navigation={true}
         modules={[Navigation, Autoplay]}
-        className="mySwiper"
-        style={{ height: 600 }}
+        className={styles.mySwiper}
       >
         <SwiperSlide>
           <Image

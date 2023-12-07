@@ -1,3 +1,19 @@
+.mySwiper {
+  height: 600px;
+}
+
 .image {
   object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
+  .mySwiper {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mySwiper {
+    height: 350px;
+  }
 }

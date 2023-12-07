@@ -8,6 +8,7 @@ import {
   BookOutlined,
   FormOutlined,
   LogoutOutlined,
+  MenuOutlined,
   SettingOutlined,
   SnippetsOutlined,
   SolutionOutlined,
@@ -16,16 +17,23 @@ import {
 const AuthLinks = () => {
   const { status, data } = useSession();
   const [open, setOpen] = useState(false);
-
+  const [openMenuResponse, setOpenMenuResponse] = useState(false);
   const handleOpenDropdown = () => {
     setOpen(!open);
+  };
+
+  const handleOpenMenu = () => {
+    setOpenMenuResponse(!openMenuResponse);
   };
   return (
     <>
       {status === "unauthenticated" ? (
-        <Link href="/login" className={styles.link}>
-          Đăng nhập
-        </Link>
+        <>
+          <Link href="/login" className={styles.link}>
+            Đăng nhập
+          </Link>
+          <MenuOutlined className={styles.bugger} onClick={handleOpenMenu} />
+        </>
       ) : (
         <>
           <Link href="/write" className={styles.link}>
@@ -92,6 +100,14 @@ const AuthLinks = () => {
               Đăng xuất
             </span>
           </div>
+        </div>
+      )}
+
+      {openMenuResponse && (
+        <div className={styles.responsiveMenu} onClick={handleOpenMenu}>
+          <Link href="/">Homepage</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
         </div>
       )}
     </>

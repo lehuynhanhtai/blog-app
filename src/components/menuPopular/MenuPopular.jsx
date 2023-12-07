@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import styles from "./menuAuthor.module.css";
+import styles from "./menuPopular.module.css";
 import { popularPosts } from "@/utils/callAPI";
 import { EyeOutlined } from "@ant-design/icons";
 import dateFormat, { masks } from "dateformat";
 
-const MenuAuthor = async () => {
+const MenuPopular = async () => {
   const data = await popularPosts();
+  console.log(data);
   return (
     <div className={styles.items}>
       {data
@@ -15,10 +16,10 @@ const MenuAuthor = async () => {
         .slice(0, 4)
         .map((item) => (
           <div className={styles.item} key={item.id}>
-            {item?.user?.image && (
+            {item.img && (
               <Link href="/" className={styles.imageContainer}>
                 <Image
-                  src={item?.user?.image}
+                  src={item.img}
                   alt=""
                   priority={true}
                   fill
@@ -56,4 +57,4 @@ const MenuAuthor = async () => {
   );
 };
 
-export default MenuAuthor;
+export default MenuPopular;
