@@ -32,7 +32,7 @@ const MenuAuthor = async () => {
                 href={`/blog?cat=${item.catSlug}`}
                 className={styles.category}
               >
-                {item.cateTitle}
+                {item.cat.name}
               </Link>
               <h3 className={styles.postTitle}>
                 <Link href={`/posts/${item.slug}`}>{item.title}</Link>

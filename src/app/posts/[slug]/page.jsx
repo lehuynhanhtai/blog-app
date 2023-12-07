@@ -22,7 +22,7 @@ const SinglePage = async ({ params }) => {
             className={styles.category}
             as="style"
           >
-            {data.cateTitle}
+            {data.cat.name}
           </Link>
           <h1 style={{ fontSize: 45 }}>{data.title}</h1>
           <div className={styles.user}>
@@ -65,7 +65,6 @@ const SinglePage = async ({ params }) => {
             <Comment postSlug={slug} />
           </div>
         </div>
-        {/* <Menu /> */}
       </div>
     </div>
   );

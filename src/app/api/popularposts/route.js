@@ -6,6 +6,7 @@ export const GET = async () => {
     const popularPost = await prisma.post.findMany({
       include: {
         user: true,
+        cat: true,
       },
     });
 

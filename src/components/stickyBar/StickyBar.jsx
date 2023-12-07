@@ -14,13 +14,6 @@ const StickyBar = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 500) {
-        setDisplay(true);
-      } else {
-        setDisplay(false);
-      }
-    });
     const handleScroll = () => {
       const contentElement = document.getElementById("post-content");
       const scrollY = window.scrollY;

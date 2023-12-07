@@ -13,6 +13,9 @@ export const GET = async (req) => {
     where: {
       ...(cat && { catSlug: cat }),
     },
+    include: {
+      cat: true,
+    },
   };
 
   try {
@@ -28,7 +31,7 @@ export const GET = async (req) => {
       );
     } else {
       return new NextResponse(
-        JSON.stringify({ message: "No categories found!" }, { status: 404 })
+        JSON.stringify({ message: "No data found!" }, { status: 404 })
       );
     }
   } catch (error) {
