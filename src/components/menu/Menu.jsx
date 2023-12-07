@@ -12,8 +12,8 @@ const Menu = () => {
       <h1 className={styles.title}>Chủ đề</h1>
       <MenuCategories />
 
-      <h2 className={styles.subTitle}>Được biên tập viên lựa chọn</h2>
-      <h1 className={styles.title}>Tác giả phổ biến</h1>
+      <h2 className={styles.subTitle}>Được người dùng lựa chọn</h2>
+      <h1 className={styles.title}>Ngòi bút nổi bật</h1>
       <MenuAuthor />
     </div>
   );

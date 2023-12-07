@@ -5,6 +5,7 @@ import Comment from "@/components/comment/Comment";
 import { findOnePost } from "@/utils/callAPI";
 import Link from "next/link";
 import dateFormat from "dateformat";
+import StickyBar from "@/components/stickyBar/StickyBar";
 
 const SinglePage = async ({ params }) => {
   const { slug } = params;
@@ -12,6 +13,8 @@ const SinglePage = async ({ params }) => {
 
   return (
     <div className={styles.container}>
+      <StickyBar />
+
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
           <Link
@@ -55,7 +58,9 @@ const SinglePage = async ({ params }) => {
       </div>
       <div className={styles.content}>
         <div className={styles.post}>
-          <div className={styles.description}>{data.desc}</div>
+          <div id="post-content" className={styles.description}>
+            {data.desc}
+          </div>
           <div className={styles.comment}>
             <Comment postSlug={slug} />
           </div>
