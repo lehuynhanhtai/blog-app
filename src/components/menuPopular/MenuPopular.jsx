@@ -8,7 +8,6 @@ import dateFormat, { masks } from "dateformat";
 
 const MenuPopular = async () => {
   const data = await popularPosts();
-  console.log(data);
   return (
     <div className={styles.items}>
       {data

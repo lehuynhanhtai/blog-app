@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./menu.module.css";
 import MenuPopular from "../menuPopular/MenuPopular";
 import MenuCategories from "../menuCategories/MenuCategories";
+import MenuAuthor from "../menuAuthor/MenuAuthor";
 const Menu = () => {
   return (
     <div className={styles.container}>
@@ -15,6 +16,7 @@ const Menu = () => {
 
       <h2 className={styles.subTitle}>Được người dùng lựa chọn</h2>
       <h1 className={styles.title}>Ngòi bút nổi bật</h1>
+      <MenuAuthor />
     </div>
   );
 };

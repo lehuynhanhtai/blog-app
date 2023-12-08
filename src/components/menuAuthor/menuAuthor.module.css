@@ -1,0 +1,81 @@
+.items {
+  margin-top: 35px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+}
+
+.imageContainer {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  aspect-ratio: 1/1;
+}
+
+.image {
+  border: 3px solid lightgray;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.inforContainer {
+  flex: 4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.userName {
+  width: 100%;
+  font-weight: 700;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: max-content;
+  display: -webkit-box;
+}
+
+.follow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.tooltipText {
+  top: 25px;
+  left: -20px;
+  visibility: hidden;
+  width: 120px;
+  background-color: crimson;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 15px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.follow:hover .tooltipText {
+  visibility: visible;
+}
+
+.iconFollow {
+  font-size: 25px;
+  cursor: pointer;
+}
