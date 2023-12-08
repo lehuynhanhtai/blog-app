@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
+import { HeatMapOutlined, MessageOutlined } from "@ant-design/icons";
+import dateFormat from "dateformat";
 
 const Card = ({ item }) => {
   return (
@@ -18,7 +20,7 @@ const Card = ({ item }) => {
       <div className={styles.textContainer}>
         <div className={styles.detail}>
           <span className={styles.date}>
-            {item.createdAt.substring(0, 10)} -{" "}
+            {dateFormat(item.createdAt, "dd-mm-yyyy")} -{" "}
           </span>
           <Link href={`/blog?cat=${item.catSlug}`} className={styles.category}>
             {item.cat.name}
@@ -29,9 +31,37 @@ const Card = ({ item }) => {
           <h2>{item.title}</h2>
         </Link>
         <p className={styles.desc}>{item.desc}</p>
-        <Link href={`/posts/${item.slug}`} className={styles.link}>
-          Read More
-        </Link>
+        <div className={styles.author}>
+          <div className={styles.user}>
+            <Link
+              href={`/`}
+              rel="preload"
+              as="styles"
+              className={styles.avatarContainer}
+            >
+              <Image
+                src={item?.user?.image}
+                alt=""
+                priority={true}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                className={styles.avatar}
+              />
+            </Link>
+            <p style={{ fontWeight: 700 }}>{item.user.name}</p>
+          </div>
+
+          <div className={styles.itemEnd}>
+            <div className={styles.icon}>
+              <HeatMapOutlined className={styles.item} />
+              <span>12k1</span>
+            </div>
+            <div className={styles.icon}>
+              <MessageOutlined className={styles.item} />
+              <span>12k1</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

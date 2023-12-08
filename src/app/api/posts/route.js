@@ -15,6 +15,7 @@ export const GET = async (req) => {
     },
     include: {
       cat: true,
+      user: true,
     },
   };
 
