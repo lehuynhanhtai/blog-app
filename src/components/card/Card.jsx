@@ -34,9 +34,8 @@ const Card = ({ item }) => {
         <div className={styles.author}>
           <div className={styles.user}>
             <Link
-              href={`/`}
+              href={`user/${item.user.id}`}
               rel="preload"
-              as="styles"
               className={styles.avatarContainer}
             >
               <Image

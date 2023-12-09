@@ -16,7 +16,10 @@ const MenuPopular = async () => {
         .map((item) => (
           <div className={styles.item} key={item.id}>
             {item.img && (
-              <Link href="/" className={styles.imageContainer}>
+              <Link
+                href={`/posts/${item.slug}`}
+                className={styles.imageContainer}
+              >
                 <Image
                   src={item.img}
                   alt=""

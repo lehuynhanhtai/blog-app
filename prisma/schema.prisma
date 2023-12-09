@@ -46,8 +46,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  Post          Post[]
-  Comment       Comment[]
+  post          Post[]
+  comment       Comment[]
 }
 
 model VerificationToken {
@@ -63,7 +63,7 @@ model Category {
   slug  String  @unique
   name  String
   img   String?
-  Posts Post[]
+  posts Post[]
 }
 
 model Post {
