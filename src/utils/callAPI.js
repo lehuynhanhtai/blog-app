@@ -51,3 +51,27 @@ export const popularPosts = async () => {
     throw error;
   }
 };
+
+export const getAllUser = async () => {
+  try {
+    const response = await axios.get(url + `/api/users`, {
+      cache: "no-store",
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
+export const getOneUser = async (id) => {
+  try {
+    const response = await axios.get(url + `/api/users/${id}`, {
+      cache: "no-store",
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
