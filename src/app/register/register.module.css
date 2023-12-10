@@ -1,6 +1,6 @@
 .container {
   margin: auto;
-  border: 1px solid #aaaa;
+  border: 1px solid #aaa;
   padding: 20px 30px;
   border-radius: 10px;
   width: 450px;
@@ -40,30 +40,9 @@
   cursor: pointer;
 }
 
-.another {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.loginAnother {
-  padding: 15px 30px;
-  border: 1px solid #aaaa;
-  border-radius: 30px;
-  cursor: pointer;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
 @media screen and (max-width: 640px) {
   .container {
     margin: 0;
     width: auto;
-  }
-  .another {
-    flex-direction: column;
   }
 }

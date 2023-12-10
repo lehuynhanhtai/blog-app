@@ -3,6 +3,7 @@ import styles from "./menu.module.css";
 import MenuPopular from "../menuPopular/MenuPopular";
 import MenuCategories from "../menuCategories/MenuCategories";
 import MenuAuthor from "../menuAuthor/MenuAuthor";
+import Link from "next/link";
 const Menu = () => {
   return (
     <div className={styles.container}>
@@ -15,7 +16,16 @@ const Menu = () => {
       <MenuCategories />
 
       <h2 className={styles.subTitle}>Được người dùng lựa chọn</h2>
-      <h1 className={styles.title}>Ngòi bút nổi bật</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+        }}
+      >
+        <h1 className={styles.title}>Ngòi bút nổi bật</h1>
+        <Link href="/users">Xem thêm</Link>
+      </div>
       <MenuAuthor />
     </div>
   );

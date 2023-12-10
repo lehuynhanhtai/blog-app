@@ -21,18 +21,18 @@ a {
 }
 
 .dark {
-  /* --bg: #0f172a; */
-  --bg: #1a0d05;
+  --bg: #111827;
   --textColor: #ddd;
-  /* --softBg: #1f273a; */
-  --softBg: #3c2111;
+  --softBg: #1f2937;
+  --cateBg: #364566;
   --softTextColor: #fff;
 }
 
 .light {
   --bg: white;
   --textColor: black;
-  --softBg: #f0f0f0;
+  --softBg: #fcfcfc;
+  --cateBg: #ffaaaa;
   --softTextColor: #626262;
 }
 
