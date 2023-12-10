@@ -53,6 +53,10 @@ const CategoryList = () => {
                   width={32}
                   height={32}
                   className={styles.image}
+                  loading="eager"
+                  unoptimized={true}
+                  decoding="async"
+                  timeout={10000}
                 />
               )}
               {item.name}

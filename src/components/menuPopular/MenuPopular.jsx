@@ -27,6 +27,10 @@ const MenuPopular = async () => {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
                   className={styles.image}
+                  loading="eager"
+                  unoptimized={true}
+                  decoding="async"
+                  timeout={10000}
                 />
               </Link>
             )}

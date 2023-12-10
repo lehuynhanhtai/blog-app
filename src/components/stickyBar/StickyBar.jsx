@@ -51,6 +51,10 @@ const StickyBar = () => {
               priority={true}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
               className={styles.avatar}
+              loading="eager"
+              unoptimized={true}
+              decoding="async"
+              timeout={10000}
             />
           </div>
           <BookOutlined className={styles.icon} />

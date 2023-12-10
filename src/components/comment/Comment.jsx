@@ -105,17 +105,21 @@ const Comment = ({ postSlug }) => {
           : [...data].reverse().map((item) => (
               <div className={styles.comment} key={item.id}>
                 <div className={styles.user}>
-                  {item?.user?.image && (
-                    <Link href={``}>
+                  <Link href={``}>
+                    {item?.user?.image && (
                       <Image
                         className={styles.image}
                         src={item?.user?.image}
                         alt=""
                         width={50}
                         height={50}
+                        loading="eager"
+                        unoptimized={true}
+                        decoding="async"
+                        timeout={10000}
                       />
-                    </Link>
-                  )}
+                    )}
+                  </Link>
                   <div className={styles.userInfo}>
                     <div>
                       <span className={styles.username}>

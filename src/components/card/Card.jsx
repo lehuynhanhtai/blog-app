@@ -15,6 +15,10 @@ const Card = ({ item }) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
           priority={true}
           className={styles.image}
+          loading="eager"
+          unoptimized={true}
+          decoding="async"
+          timeout={10000}
         />
       </Link>
       <div className={styles.textContainer}>
@@ -38,14 +42,20 @@ const Card = ({ item }) => {
               rel="preload"
               className={styles.avatarContainer}
             >
-              <Image
-                src={item?.user?.image}
-                alt=""
-                priority={true}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-                className={styles.avatar}
-              />
+              {item?.user.image && (
+                <Image
+                  src={item?.user?.image}
+                  alt=""
+                  priority={true}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                  className={styles.avatar}
+                  loading="eager"
+                  unoptimized={true}
+                  decoding="async"
+                  timeout={10000}
+                />
+              )}
             </Link>
             <p style={{ fontWeight: 700 }}>{item.user.name}</p>
           </div>

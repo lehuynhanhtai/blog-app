@@ -48,6 +48,10 @@ const AuthLinks = () => {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
                 className={styles.image}
+                loading="eager"
+                unoptimized={true}
+                decoding="async"
+                timeout={10000}
               />
             )}
           </div>
@@ -66,6 +70,10 @@ const AuthLinks = () => {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
                   className={styles.imageUserProf}
+                  loading="eager"
+                  unoptimized={true}
+                  decoding="async"
+                  timeout={10000}
                 />
               )}
             </div>
