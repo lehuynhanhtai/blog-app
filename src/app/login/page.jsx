@@ -26,13 +26,20 @@ const LoginPage = () => {
     }
   }, [status, router, storedRedirect]);
 
-  const handleLogin = () => {};
+  const handleLogin = (e) => {
+    e.preventDefault();
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    });
+    router.push("/");
+  };
 
   return (
     <>
       <div className={styles.container}>
         <h1 style={{ marginTop: 10, marginBottom: 20 }}>Đăng nhập</h1>
-        <form action="" className={styles.form} onSubmit={handleLogin}>
+        <form className={styles.form} onSubmit={handleLogin}>
           <div className={styles.item}>
             <label htmlFor="account" className={styles.label}>
               Tài khoản

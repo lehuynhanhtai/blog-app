@@ -11,7 +11,18 @@ export default function Register() {
     account: "",
     password: "",
   });
-  const handleRegister = () => {};
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    await fetch("api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ data }),
+    });
+
+    router.push("/login");
+  };
   return (
     <div className={styles.container}>
       <h1 style={{ marginTop: 10, marginBottom: 20 }}>Tạo tài khoản</h1>
