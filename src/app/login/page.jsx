@@ -49,6 +49,7 @@ const LoginPage = () => {
               name="account"
               required
               value={data.account}
+              autoComplete="username"
               type="text"
               className={styles.input}
               onChange={(e) => {
@@ -65,6 +66,7 @@ const LoginPage = () => {
               name="password"
               required
               value={data.password}
+              autoComplete="current-password"
               type="password"
               className={styles.input}
               onChange={(e) => {

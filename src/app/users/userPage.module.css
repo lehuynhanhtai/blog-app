@@ -1,0 +1,82 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 300px;
+  border-bottom: 1px solid #aaa;
+}
+
+.content {
+  position: relative;
+}
+
+.itemUser {
+  display: flex;
+  max-width: 555px;
+  gap: 10px;
+  min-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.imageContainer {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  aspect-ratio: 1/1;
+}
+
+.image {
+  border: 3px solid lightgray;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.follow {
+  border: 1px solid lightgray;
+  padding: 10px 20px;
+  border-radius: 30px;
+  height: 50px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.button {
+  padding: 15px 70px;
+  border: 1px solid #aaaa;
+  cursor: pointer;
+  background-color: #2563eb;
+  color: #fff;
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 30px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 640px) {
+  .follow p {
+    display: none;
+  }
+}

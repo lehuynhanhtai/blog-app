@@ -13,7 +13,7 @@ const MenuAuthor = async () => {
     <div className={styles.items}>
       {sortedData.slice(0, 4).map((items) => (
         <div className={styles.item} key={items.id}>
-          <Link href={`user/${items.id}`} className={styles.imageContainer}>
+          <Link href={`users/${items.id}`} className={styles.imageContainer}>
             {items?.image && (
               <Image
                 src={items?.image}
