@@ -17,7 +17,7 @@ const navTabs = [
 
 export default function TabsBar(props) {
   const searchParams = useSearchParams();
-  const selectorTab = searchParams.get("tab");
+  const selectorTab = searchParams.get("tab") || "createdPosts";
   const [visible, setVisible] = useState(3);
   const [loading, setLoading] = useState(false);
   const { dataUser } = props;
