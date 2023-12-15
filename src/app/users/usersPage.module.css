@@ -75,6 +75,8 @@
   justify-content: center;
 }
 
+/* id user */
+
 @media screen and (max-width: 640px) {
   .follow p {
     display: none;

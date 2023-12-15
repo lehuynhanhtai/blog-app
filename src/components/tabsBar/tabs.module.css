@@ -1,0 +1,92 @@
+.container {
+  flex: 4;
+}
+
+.tabHeader {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid #1b366f;
+}
+
+.link {
+  font-size: 20px;
+  padding: 5px 25px;
+}
+
+.active {
+  font-weight: 700;
+  border-bottom: 1px solid blue;
+}
+
+.cards {
+  margin: 0 auto;
+  gap: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cardImgContainer {
+  min-height: 250px;
+  position: relative;
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.cardTitle {
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25px;
+  -webkit-line-clamp: 2;
+  height: max-content;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25px;
+  -webkit-line-clamp: 2;
+  height: max-content;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.cardTime {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.8;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+.loadMore {
+  text-align: center;
+  padding: 12px;
+  margin-top: 15px;
+  cursor: pointer;
+  background-color: #1b366f;
+  color: #fff;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 680px) {
+  .card {
+    width: 100%;
+  }
+}

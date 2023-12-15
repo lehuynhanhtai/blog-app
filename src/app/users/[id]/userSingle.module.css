@@ -1,0 +1,108 @@
+.background {
+  border-right: 1px solid;
+  position: relative;
+}
+
+.bgImageContainer {
+  position: relative;
+  min-height: 300px;
+}
+
+.bgImage {
+  object-fit: cover;
+}
+
+.imgContainer {
+  position: absolute;
+  bottom: -100px;
+  aspect-ratio: 1/1;
+  width: 180px;
+  height: 180px;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+.infor {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  height: 100px;
+}
+
+.name {
+  margin-left: 220px;
+}
+
+.groupButton {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.buttonInfor {
+  padding: 10px 40px;
+  color: #fff;
+  font-size: 18px;
+  background-color: #1b366f;
+  cursor: pointer;
+  border: none;
+}
+
+.menuInfor {
+  margin-top: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.menu1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editInfor {
+  border: 1px solid #1b366f;
+  background-color: #1b366f;
+  color: #fff;
+  padding: 10px 30px;
+  width: 300px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.groupFollow {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.menu2 {
+  flex: 2;
+}
+
+@media screen and (max-width: 1280px) {
+  .imgContainer {
+    transform: translate(-50%);
+    left: 50%;
+  }
+  .name {
+    margin-left: 0;
+  }
+  .infor {
+    flex-direction: column;
+    margin-top: 100px;
+  }
+  .menuInfor {
+    flex-direction: column;
+  }
+  .menu1 {
+    align-items: center;
+  }
+}

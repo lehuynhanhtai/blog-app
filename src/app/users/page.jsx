@@ -1,6 +1,6 @@
 "use client";
 import { getAllUser } from "@/utils/callAPI";
-import styles from "./userPage.module.css";
+import styles from "./usersPage.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";

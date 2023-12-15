@@ -74,6 +74,8 @@ a {
 @media screen and (max-width: 768px) {
   .wrapper {
     max-width: 640px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media screen and (max-width: 640px) {

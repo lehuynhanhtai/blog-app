@@ -8,6 +8,9 @@ export const GET = async (req, { params }) => {
       where: {
         id: id,
       },
+      include: {
+        post: true,
+      },
     });
     return new NextResponse(JSON.stringify(user, { status: 200 }));
   } catch (error) {

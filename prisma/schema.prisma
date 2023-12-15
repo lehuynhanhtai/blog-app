@@ -38,17 +38,18 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid()) @map("_id")
-  name          String?
-  slogan        String?
-  email         String    @unique
-  password      String?
-  emailVerified DateTime?
-  image         String?   @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
-  accounts      Account[]
-  sessions      Session[]
-  post          Post[]
-  comment       Comment[]
+  id             String    @id @default(cuid()) @map("_id")
+  name           String?
+  slogan         String?
+  email          String    @unique
+  password       String?
+  emailVerified  DateTime?
+  image          String?   @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
+  backgroundUser String?
+  accounts       Account[]
+  sessions       Session[]
+  post           Post[]
+  comment        Comment[]
 }
 
 model VerificationToken {
