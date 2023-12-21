@@ -1,21 +1,43 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import styles from "./footer.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeContext } from "@/context/ThemeContext";
 const Footer = () => {
+  const { theme } = useContext(ThemeContext);
+  const logoSrc = theme === "dark" ? "/whiteLogo.png" : "/blackLogo.png";
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-        <div className={styles.logo}>
-          <Image src="/logo.png" alt="lama blog" width={50} height={50} />
-          <h1 className={styles.logoText}>Lamablog</h1>
+        <Link href="/" className={styles.logo} as="/" rel="preload">
+          <Image
+            className={styles.imageLogo}
+            src={logoSrc}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+            priority="true"
+          />
+        </Link>
+        <div className={styles.desc}>
+          <p>
+            <b>Công ty Cổ Phần BV</b>
+          </p>
+
+          <p>
+            Mạng xã hội S-BLOG nơi chia sẻ quan điểm - kiến thức hàng đầu Việt
+            Nam
+          </p>
+          <p>Trực thuộc Công ty Cổ Phần S-BLOG Việt Nam (S-BLOG Vietnam JSC)</p>
+          <p>
+            Người chịu trách nhiệm nội dung: <b>Lê Huỳnh Anh Tài</b>
+          </p>
+          <p>
+            Giấy phép MXH số 341/GP-TTTT do Bộ TTTT cấp ngày 01 tháng 01 năm
+            2024
+          </p>
         </div>
-        <p className={styles.desc}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
-          necessitatibus similique aspernatur obcaecati veritatis. Aperiam cum
-          porro sequi, totam minima consequuntur, aspernatur deleniti vero
-          repellendus dorales.
-        </p>
         <div className={styles.icons}>
           <Image src="/facebook.png" alt="" width={18} height={18} />
           <Image src="/instagram.png" alt="" width={18} height={18} />

@@ -55,6 +55,7 @@ const AuthLinks = () => {
               />
             )}
           </div>
+          <MenuOutlined className={styles.bugger} onClick={handleOpenMenu} />
         </>
       )}
 

@@ -6,9 +6,6 @@ import Skeleton from "react-loading-skeleton";
 const Featured = () => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>
-        Hey, lama dev here! Discover my stories and creative ideas.
-      </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
           <Image

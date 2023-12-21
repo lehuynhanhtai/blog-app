@@ -15,9 +15,13 @@
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  width: 165px;
+  height: 50px;
+  position: relative;
+}
+
+.imageLogo {
+  object-fit: contain;
 }
 
 .logoText {

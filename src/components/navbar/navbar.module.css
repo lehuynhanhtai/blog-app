@@ -12,11 +12,13 @@
 }
 
 .logo {
+  height: 60px;
+  position: relative;
   flex: 1;
-  text-align: center;
-  font-size: 36px;
-  font-weight: bold;
-  white-space: nowrap;
+}
+
+.imageLogo {
+  object-fit: contain;
 }
 
 .links {
@@ -34,27 +36,18 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .logo {
-    font-size: 32px;
-  }
   .links {
     font-size: 16px;
     gap: 15px;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .social {
     display: none;
   }
-  .logo {
-    text-align: left;
-  }
 }
-@media screen and (max-width: 768px) {
-  .logo {
-    font-size: 24px;
-  }
-}
+
 @media screen and (max-width: 640px) {
   .links {
     justify-content: flex-end;
