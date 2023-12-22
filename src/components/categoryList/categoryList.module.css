@@ -30,11 +30,6 @@
   border-radius: 50%;
 }
 
-.loadingg {
-  display: flex;
-  justify-content: center;
-}
-
 @media screen and (max-width: 1280px) {
   .category {
     width: 20%;
@@ -50,8 +45,3 @@
     width: 45%;
   }
 }
-/* @media screen and (max-width: 640px) {
-  .category {
-    width: 100%;
-  }
-} */
