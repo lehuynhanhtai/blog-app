@@ -54,9 +54,11 @@ const SinglePage = async ({ params }) => {
       </div>
       <div className={styles.content}>
         <div className={styles.post}>
-          <div id="post-content" className={styles.description}>
-            {data.desc}
-          </div>
+          <div
+            id="post-content"
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: data?.desc }}
+          ></div>
           <div className={styles.comment}>
             <Comment postSlug={slug} />
           </div>

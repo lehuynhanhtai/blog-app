@@ -11,6 +11,26 @@
   width: max-content;
 }
 
+.category {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.selectCategory {
+  min-width: 250px;
+  outline: none;
+  padding: 10px 5px;
+  border-radius: 20px;
+  background-color: var(--bg);
+  color: var(--textColor);
+}
+
+.notification {
+  margin-top: 10px;
+}
+
 .choseButton {
   display: flex;
   gap: 20px;

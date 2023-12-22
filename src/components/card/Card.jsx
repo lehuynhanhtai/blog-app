@@ -34,7 +34,10 @@ const Card = ({ item }) => {
         <Link href={`/posts/${item.slug}`}>
           <h2>{item.title}</h2>
         </Link>
-        <p className={styles.desc}>{item.desc}</p>
+        <p
+          className={styles.desc}
+          dangerouslySetInnerHTML={{ __html: item.desc }}
+        ></p>
         <div className={styles.author}>
           <div className={styles.user}>
             <Link
