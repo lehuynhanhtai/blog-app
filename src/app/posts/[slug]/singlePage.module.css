@@ -1,8 +1,5 @@
 .container {
-  max-width: 900px;
-  min-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0 200px;
   position: relative;
 }
 
@@ -64,7 +61,7 @@
 }
 
 .imageContainer {
-  min-height: 1000px;
+  min-height: 900px;
   position: relative;
 }
 
@@ -90,22 +87,23 @@
   margin-bottom: 20px;
 }
 
-/* @media screen and (max-width: 1536px) {
-  .title {
-    font-size: 54px;
+@media screen and (max-width: 1280px) {
+  .container {
+    padding: 0;
   }
 }
-@media screen and (max-width: 1280px) {
-  .title {
-    font-size: 48px;
-  }
-} */
 @media screen and (max-width: 1024px) {
   .imageContainer {
     min-height: 500px;
   }
+  .description {
+    text-align: justify;
+  }
 }
 @media screen and (max-width: 640px) {
+  .imageContainer {
+    min-height: 450px;
+  }
   .title {
     font-size: 36px;
   }

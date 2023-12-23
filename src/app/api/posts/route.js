@@ -27,15 +27,9 @@ export const GET = async (req) => {
     ]);
     const totalPage = Math.ceil(count / pageSize);
 
-    if (posts.length > 0) {
-      return new NextResponse(
-        JSON.stringify({ page, posts, count, totalPage }, { status: 200 })
-      );
-    } else {
-      return new NextResponse(
-        JSON.stringify({ message: "No data found!" }, { status: 404 })
-      );
-    }
+    return new NextResponse(
+      JSON.stringify({ page, posts, count, totalPage }, { status: 200 })
+    );
   } catch (error) {
     console.log(error);
     return new NextResponse(

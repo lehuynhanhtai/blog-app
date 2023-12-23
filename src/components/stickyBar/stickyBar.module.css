@@ -25,3 +25,21 @@
   border-radius: 50%;
   border: 3px solid #fff;
 }
+
+@media screen and (max-width: 1536px) {
+  .container {
+    left: 100px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .container {
+    display: none;
+  }
+}
