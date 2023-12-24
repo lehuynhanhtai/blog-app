@@ -7,7 +7,7 @@ export const GET = async (req) => {
   const page = parseInt(searchParams.get("page")) || 1; // Chuyển đổi thành số và mặc định là 1 nếu không có giá trị
   const cat = searchParams.get("cat");
 
-  const pageSize = 2; // Số lượng bài viết mỗi trang
+  const pageSize = 10; // Số lượng bài viết mỗi trang
   const query = {
     take: pageSize,
     skip: pageSize * (page - 1), // Bỏ qua số lượng bài viết phù hợp với trang trước đó
@@ -50,6 +50,13 @@ export const POST = async (req) => {
 
   try {
     const body = await req.json();
+    const { slug, title, desc, img } = body;
+    if (!slug || !title || !desc || !img) {
+      return new NextResponse(
+        JSON.stringify({ message: "Bad request" }, { status: 400 })
+      );
+    }
+
     const post = await prisma.post.create({
       data: { ...body, userEmail: session.user.email },
     });
@@ -63,6 +70,7 @@ export const POST = async (req) => {
     );
   } catch (err) {
     console.log(err);
+
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );

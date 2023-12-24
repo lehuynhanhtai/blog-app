@@ -9,6 +9,17 @@
   display: flex;
   gap: 10px;
   flex: 2;
+  align-items: center;
+}
+
+.searchParams {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 18px;
 }
 
 .logo {

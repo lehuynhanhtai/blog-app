@@ -6,6 +6,7 @@ import Link from "next/link";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import AuthLinks from "../authLinks/AuthLinks";
 import { ThemeContext } from "@/context/ThemeContext";
+import { SearchOutlined } from "@ant-design/icons";
 
 const Navbar = () => {
   const { theme } = useContext(ThemeContext);
@@ -16,6 +17,10 @@ const Navbar = () => {
         <Image src="/facebook.png" alt="facebook" width={24} height={24} />
         <Image src="/instagram.png" alt="instagram" width={24} height={24} />
         <Image src="/youtube.png" alt="youtube" width={24} height={24} />
+        <Link href="/search" className={styles.searchParams}>
+          <SearchOutlined />
+          <span>Tìm kiếm...</span>
+        </Link>
       </div>
       <Link href="/" as="/" className={styles.logo} rel="preload">
         <Image

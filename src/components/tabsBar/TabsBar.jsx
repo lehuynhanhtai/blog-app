@@ -74,7 +74,10 @@ export default function TabsBar(props) {
                     <h2 className={styles.cardTitle}>
                       <Link href={`/posts/${item.slug}`}>{item.title}</Link>
                     </h2>
-                    <p className={styles.desc}>{item.desc}</p>
+                    <p
+                      className={styles.desc}
+                      dangerouslySetInnerHTML={{ __html: item.desc }}
+                    ></p>
                     <div className={styles.cardTime}>
                       <span>{dateFormat(item.createdAt, "dd-mm-yyyy")}</span>
                       <span>

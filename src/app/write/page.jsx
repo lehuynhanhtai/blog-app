@@ -85,10 +85,20 @@ const WritePage = () => {
         catSlug: catSlug,
       }),
     });
-    if (res.status === 200) {
+
+    if (!title || !description || !media) {
+      toast.error("bạn chưa nhập đầy đủ", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+
+    if (res.status === 200 && title && description && media) {
       toast.success("Đăng bài thành công!!", {
         position: toast.POSITION.TOP_RIGHT,
       });
+      setTitle(" ");
+      setDescription("");
+      setMedia("");
     }
   };
 
