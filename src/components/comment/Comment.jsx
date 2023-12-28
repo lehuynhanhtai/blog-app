@@ -68,7 +68,7 @@ const Comment = ({ postSlug }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div id="comments" className={styles.container}>
       <h1 className={styles.title}>Bình luận</h1>
       <div className={styles.write}>
         <textarea

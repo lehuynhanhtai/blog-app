@@ -24,26 +24,30 @@ const CardList = (props) => {
       });
   }, [page, cat]);
 
-  const handleNext = (event) => {
-    event.preventDefault();
-    const newPage = page + 1;
-    router.push(`?page=${newPage}`, {
-      scroll: false,
-    });
-    setPage(newPage);
+  const divContent = document.getElementById("cardList");
+
+  const handleNext = () => {
+    if (divContent) {
+      divContent.scrollIntoView({ behavior: "instant" });
+      const newPage = page + 1;
+      router.push(`?page=${newPage}`, { scroll: false });
+      setPage(newPage);
+    }
   };
 
-  const handlePrev = (event) => {
-    event.preventDefault();
-    const newPage = page - 1;
-    router.push(`?page=${newPage}`, {
-      scroll: false,
-    });
-    setPage(newPage);
+  const handlePrev = () => {
+    if (divContent) {
+      divContent.scrollIntoView({ behavior: "instant" });
+      const newPage = page - 1;
+      router.push(`?page=${newPage}`, {
+        scroll: false,
+      });
+      setPage(newPage);
+    }
   };
 
   return (
-    <div className={styles.container}>
+    <div id="cardList" className={styles.container}>
       <h1 className={styles.title}>Bài viết gần đây</h1>
       <div className={styles.posts}>
         {data?.map((item) => {

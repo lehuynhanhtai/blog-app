@@ -50,6 +50,18 @@ export const authOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async session({ session, user }) {
+      const inforUser = await prisma.user.findUnique({
+        where: {
+          email: session.user.email,
+        },
+      });
+      user = inforUser;
+
+      return { session, user };
+    },
+  },
 };
 
 export const getAuthSession = () => getServerSession(authOptions);

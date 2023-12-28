@@ -8,10 +8,12 @@ import {
 } from "@ant-design/icons";
 import styles from "./stickyBar.module.css";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
-const StickyBar = () => {
+const StickyBar = ({ dataPost, postSlug }) => {
   const [display, setDisplay] = useState(false);
+  const [votes, setVotes] = useState(dataPost.votes);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +30,6 @@ const StickyBar = () => {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -36,27 +37,47 @@ const StickyBar = () => {
     };
   }, []);
 
+  const handleUpVotes = async () => {
+    setVotes(votes + 1);
+  };
+
+  const handleDownVotes = async () => {
+    setVotes(votes - 1);
+  };
+
+  const handleClickComment = () => {
+    const contentDiv = document.getElementById("comments");
+    if (contentDiv) {
+      contentDiv.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {display && (
         <div className={styles.container}>
-          <LikeOutlined className={styles.icon} />
-          {12}
-          <DislikeOutlined className={styles.icon} />
-          <div className={styles.userImageContainer}>
-            <Image
-              src="/p1.jpeg"
-              alt=""
-              fill
-              priority={true}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-              className={styles.avatar}
-              loading="eager"
-              unoptimized={true}
-              decoding="async"
-              timeout={10000}
-            />
-          </div>
+          <LikeOutlined className={styles.icon} onClick={handleUpVotes} />
+          {votes}
+          <DislikeOutlined className={styles.icon} onClick={handleDownVotes} />
+          <Link
+            href={`/users/${dataPost?.user.id}`}
+            className={styles.userImageContainer}
+          >
+            {dataPost?.user.image && (
+              <Image
+                src={dataPost?.user.image}
+                alt=""
+                fill
+                priority={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                className={styles.avatar}
+                loading="eager"
+                unoptimized={true}
+                decoding="async"
+                timeout={10000}
+              />
+            )}
+          </Link>
           <BookOutlined className={styles.icon} />
           <div
             style={{
@@ -65,8 +86,11 @@ const StickyBar = () => {
               alignItems: "center",
             }}
           >
-            <CommentOutlined className={styles.icon} />
-            {2}
+            <CommentOutlined
+              className={styles.icon}
+              onClick={handleClickComment}
+            />
+            <p style={{ marginTop: 15 }}>{dataPost?.comments.length}</p>
           </div>
           <ShareAltOutlined className={styles.icon} />
         </div>

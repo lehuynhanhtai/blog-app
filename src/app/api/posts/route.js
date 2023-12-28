@@ -7,7 +7,7 @@ export const GET = async (req) => {
   const page = parseInt(searchParams.get("page")) || 1; // Chuyển đổi thành số và mặc định là 1 nếu không có giá trị
   const cat = searchParams.get("cat");
 
-  const pageSize = 10; // Số lượng bài viết mỗi trang
+  const pageSize = 5; // Số lượng bài viết mỗi trang
   const query = {
     take: pageSize,
     skip: pageSize * (page - 1), // Bỏ qua số lượng bài viết phù hợp với trang trước đó

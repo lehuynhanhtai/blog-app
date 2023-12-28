@@ -10,10 +10,9 @@ import StickyBar from "@/components/stickyBar/StickyBar";
 const SinglePage = async ({ params }) => {
   const { slug } = params;
   const data = await findOnePost(slug);
-
   return (
     <div className={styles.container}>
-      <StickyBar />
+      <StickyBar dataPost={data} postSlug={slug} />
 
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>

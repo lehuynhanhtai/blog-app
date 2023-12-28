@@ -91,3 +91,15 @@
     gap: 10px;
   }
 }
+
+@media screen and (max-width: 1280px) {
+  .imageContainer {
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .imageContainer {
+    min-height: 250px;
+  }
+}

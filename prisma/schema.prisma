@@ -32,9 +32,9 @@ model Account {
 model Session {
   id           String   @id @default(cuid()) @map("_id")
   sessionToken String   @unique
-  userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
 }
 
 model User {
@@ -76,6 +76,7 @@ model Post {
   desc      String
   img       String?
   views     Int       @default(0)
+  votes     Int       @default(0)
   catSlug   String
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String

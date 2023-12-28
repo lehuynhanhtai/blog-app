@@ -11,6 +11,7 @@ export const GET = async (req, { params }) => {
       include: {
         user: true,
         cat: true,
+        comments: true,
       },
     });
 

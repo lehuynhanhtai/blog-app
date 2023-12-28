@@ -21,7 +21,6 @@ const AuthLinks = () => {
   const handleOpenDropdown = () => {
     setOpen(!open);
   };
-
   const handleOpenMenu = () => {
     setOpenMenuResponse(!openMenuResponse);
   };
@@ -63,9 +62,9 @@ const AuthLinks = () => {
         <div className={styles.menuDropdown}>
           <div className={styles.userProf}>
             <div className={styles.imageContainerProf}>
-              {data?.user?.image && (
+              {data?.user.image && (
                 <Image
-                  src={data.user.image}
+                  src={data?.user.image}
                   alt=""
                   priority={true}
                   fill
@@ -79,16 +78,22 @@ const AuthLinks = () => {
               )}
             </div>
             <div className={styles.userInfor}>
-              <p style={{ fontWeight: 600 }}>{data?.user?.email}</p>
-              <p>{data?.user?.name}</p>
+              <p style={{ fontWeight: 600 }}>{data?.user.email}</p>
+              <p>{data?.user.name}</p>
             </div>
           </div>
           <div className={styles.menuLink} onClick={handleOpenDropdown}>
-            <Link className={styles.linkDropdown} href="/">
+            <Link
+              className={styles.linkDropdown}
+              href={`/users/${data?.user.id}`}
+            >
               <SolutionOutlined style={{ marginRight: 10 }} />
               Trang cá nhân
             </Link>
-            <Link className={styles.linkDropdown} href="/">
+            <Link
+              className={styles.linkDropdown}
+              href={`/users/${data?.user.id}?tab=createdPosts`}
+            >
               <FormOutlined style={{ marginRight: 10 }} />
               Bài viết của tôi
             </Link>
@@ -114,9 +119,10 @@ const AuthLinks = () => {
 
       {openMenuResponse && (
         <div className={styles.responsiveMenu} onClick={handleOpenMenu}>
-          <Link href="/">Homepage</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/">Trang chủ</Link>
+          <Link href="/about">Về S-BLOG</Link>
+          <Link href="/contact">Liên hệ</Link>
+          <Link href="/search">Tìm kiếm</Link>
         </div>
       )}
     </>
