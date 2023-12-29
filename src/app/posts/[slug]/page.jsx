@@ -6,6 +6,7 @@ import { findOnePost } from "@/utils/callAPI";
 import Link from "next/link";
 import dateFormat from "dateformat";
 import StickyBar from "@/components/stickyBar/StickyBar";
+import CardListFooter from "@/components/cardListFooter/CardListFooter";
 
 const SinglePage = async ({ params }) => {
   const { slug } = params;
@@ -13,7 +14,6 @@ const SinglePage = async ({ params }) => {
   return (
     <div className={styles.container}>
       <StickyBar dataPost={data} postSlug={slug} />
-
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
           <Link href={`/blog?cat=${data.catSlug}`} className={styles.category}>
@@ -67,6 +67,7 @@ const SinglePage = async ({ params }) => {
           </div>
         </div>
       </div>
+      <CardListFooter />
     </div>
   );
 };

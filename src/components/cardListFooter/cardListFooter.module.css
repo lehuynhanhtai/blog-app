@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+}
+.itemSwiper {
+  min-height: 390px;
+  min-width: 390px;
+}
+
+.imgContainer {
+  height: 250px;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.title {
+  font-size: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 30px;
+  -webkit-line-clamp: 2;
+  height: max-content;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.desc {
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25px;
+  -webkit-line-clamp: 2;
+  height: max-content;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

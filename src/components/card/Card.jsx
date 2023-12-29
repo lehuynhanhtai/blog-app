@@ -8,18 +8,20 @@ const Card = ({ item }) => {
   return (
     <div className={styles.container}>
       <Link href={`/posts/${item.slug}`} className={styles.imageContainer}>
-        <Image
-          src={item.img}
-          alt=""
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-          priority={true}
-          className={styles.image}
-          loading="eager"
-          unoptimized={true}
-          decoding="async"
-          timeout={10000}
-        />
+        {item?.img && (
+          <Image
+            src={item.img}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+            priority={true}
+            className={styles.image}
+            loading="eager"
+            unoptimized={true}
+            decoding="async"
+            timeout={10000}
+          />
+        )}
       </Link>
       <div className={styles.textContainer}>
         <div className={styles.detail}>
@@ -66,11 +68,11 @@ const Card = ({ item }) => {
           <div className={styles.itemEnd}>
             <div className={styles.icon}>
               <HeatMapOutlined className={styles.item} />
-              <span>12k1</span>
+              <span>{item.votes}</span>
             </div>
             <div className={styles.icon}>
               <MessageOutlined className={styles.item} />
-              <span>12k1</span>
+              <span>{item.comments.length}</span>
             </div>
           </div>
         </div>

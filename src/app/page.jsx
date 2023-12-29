@@ -4,6 +4,7 @@ import CategoryList from "@/components/categoryList/CategoryList";
 import CardList from "@/components/cardList/CardList";
 import Menu from "@/components/menu/Menu";
 import Banner from "@/components/banner/banner";
+import CardListFooter from "@/components/cardListFooter/CardListFooter";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <CardList />
         <Menu />
       </div>
+      <CardListFooter />
     </div>
   );
 }
