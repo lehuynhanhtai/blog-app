@@ -62,11 +62,11 @@ const SinglePageUser = ({ params }) => {
           <h1>{dataUser?.name}</h1>
         </div>
         {data?.user.name === dataUser.name ? (
+          <></>
+        ) : (
           <button className={styles.buttonInfor}>
             Nhắn tin <MessageOutlined />
           </button>
-        ) : (
-          <></>
         )}
       </div>
       <div className={styles.menuInfor}>
