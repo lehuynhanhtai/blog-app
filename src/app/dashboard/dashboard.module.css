@@ -1,4 +1,14 @@
 .container {
   display: flex;
   gap: 10px;
+  width: 100%;
+}
+.containerAdmin {
+  margin-top: 100px;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.title {
+  text-align: center;
 }

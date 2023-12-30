@@ -5,8 +5,8 @@ import Middleware from "./middleware";
 const DashboardPage = () => {
   Middleware();
   return (
-    <div>
-      <div>admin</div>
+    <div className={styles.containerAdmin}>
+      <div className={styles.title}>TRANG QUẢN TRỊ ỨNG DỤNG S-BLOG</div>
     </div>
   );
 };
