@@ -54,7 +54,7 @@ const CardListFooter = () => {
       >
         {shuffledPost?.slice(0, 10).map((item) => (
           <SwiperSlide key={item.id} className={styles.itemSwiper}>
-            <Link href={`/post/${item.slug}`}>
+            <Link href={`/posts/${item.slug}`}>
               <div className={styles.imgContainer}>
                 {item?.img && (
                   <Image

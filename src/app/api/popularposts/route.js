@@ -7,6 +7,7 @@ export const GET = async () => {
       include: {
         user: true,
         cat: true,
+        comments: true,
       },
     });
 

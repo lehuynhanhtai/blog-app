@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const categories = await prisma.category.findMany({});
+    const categories = await prisma.category.findMany({
+      include: {
+        posts: true,
+      },
+    });
 
     if (categories.length > 0) {
       return new NextResponse(JSON.stringify(categories, { status: 200 }));
@@ -19,3 +23,8 @@ export const GET = async () => {
     );
   }
 };
+
+export async function POST(req) {
+  const body = await req.json();
+  console.log(body);
+}

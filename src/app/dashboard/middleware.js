@@ -13,6 +13,7 @@ export default function Middleware() {
     }
     if (session?.user.role === "USER") {
       router.push("/");
+      alert("Bạn không phải là admin");
     }
   }, [router, status, session]);
   return null;

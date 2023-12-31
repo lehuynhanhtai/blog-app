@@ -10,7 +10,7 @@ const CategoryList = async () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Danh mục phổ biến</h1>
       <div className={styles.categories}>
-        {categories?.map((item) => (
+        {categories?.slice(0, 6).map((item) => (
           <Link
             href={`/blog?cat=${item.slug}`}
             className={`${styles.category} `}

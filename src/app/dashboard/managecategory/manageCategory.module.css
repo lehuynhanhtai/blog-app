@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.addBtn {
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+}
+
+.table {
+  margin-top: 20px;
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 100%;
+  padding: 20px;
+}
+
+.th {
+  padding: 10px;
+  border: 1px solid;
+}
+
+.td {
+  padding: 10px;
+  border: 1px solid;
+}
+
+.actionsBtnEdit {
+  font-size: 25px;
+  cursor: pointer;
+  color: rgb(209, 192, 11);
+}
+
+.actionsBtnDelete {
+  font-size: 25px;
+  cursor: pointer;
+  color: red;
+}

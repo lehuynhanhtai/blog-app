@@ -1,0 +1,71 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.addBtn {
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  overflow-x: auto;
+  max-width: 1130px;
+  min-height: 400px;
+}
+
+.table {
+  margin-top: 20px;
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 20px;
+}
+
+.th {
+  padding: 10px;
+  border: 1px solid;
+}
+
+.td {
+  padding: 10px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.tdTitle {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border: 1px solid;
+  padding: 10px;
+}
+
+.tdContent {
+  display: -webkit-box;
+  max-width: 100%;
+  height: 36px;
+  margin: 0 auto;
+  line-height: 18px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-top: 1px solid;
+}
+
+.actionsBtnEdit {
+  font-size: 25px;
+  cursor: pointer;
+  color: rgb(209, 192, 11);
+}
+
+.actionsBtnDelete {
+  font-size: 25px;
+  cursor: pointer;
+  color: red;
+}
