@@ -42,3 +42,19 @@
   cursor: pointer;
   color: red;
 }
+
+.buttonClose {
+  cursor: pointer;
+  font-size: 24px;
+  color: red;
+  background: none;
+  border: none;
+}
+.buttonAdd {
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 20px;
+  color: green;
+  background: none;
+  border: none;
+}

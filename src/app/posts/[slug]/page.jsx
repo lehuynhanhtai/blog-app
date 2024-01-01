@@ -8,6 +8,15 @@ import dateFormat from "dateformat";
 import StickyBar from "@/components/stickyBar/StickyBar";
 import CardListFooter from "@/components/cardListFooter/CardListFooter";
 
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const data = await findOnePost(slug);
+  return {
+    title: data.title,
+    description: "Xem chi tiết bài viết",
+  };
+}
+
 const SinglePage = async ({ params }) => {
   const { slug } = params;
   const data = await findOnePost(slug);

@@ -24,7 +24,22 @@ export const GET = async () => {
   }
 };
 
-export async function POST(req) {
-  const body = await req.json();
-  console.log(body);
-}
+export const POST = async (request) => {
+  const body = await request.json();
+  const { slug, name, img } = body.formData;
+  try {
+    const newCate = await prisma.category.create({
+      data: {
+        slug: slug,
+        name: name,
+        img: img,
+      },
+    });
+    return new NextResponse(JSON.stringify(newCate, { status: 200 }));
+  } catch (error) {
+    console.log(error);
+    return new NextResponse(
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+    );
+  }
+};

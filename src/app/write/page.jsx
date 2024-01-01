@@ -78,7 +78,7 @@ const WritePage = () => {
     const res = await fetch("api/posts", {
       method: "POST",
       body: JSON.stringify({
-        slug: slugify(title),
+        slug: slugify(title, { lower: true, locale: "vi" }),
         title: title,
         desc: description,
         img: media,

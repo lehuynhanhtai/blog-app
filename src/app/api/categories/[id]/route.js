@@ -20,17 +20,15 @@ export async function GET(req, { params }) {
 
 export async function DELETE(req, { params }) {
   const { id } = params;
+
   try {
-    await prisma.category.delete({
+    const data = await prisma.category.delete({
       where: {
         id: id,
       },
     });
-    return new Response(null, { status: 204 });
+    return new NextResponse(JSON.stringify(data, { status: 200 }));
   } catch (error) {
-    console.log(error);
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
-    );
+    return new NextResponse.json({ message: "can't delete" }, { status: 500 });
   }
 }
