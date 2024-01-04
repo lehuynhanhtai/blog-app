@@ -14,8 +14,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ManageCategory = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [data, setData] = useState();
+  const [isModal, setIsModal] = useState(false);
+
+  const [editAction, setEditAction] = useState(false);
+  const [dataEdit, setDataEdit] = useState({});
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -27,8 +31,61 @@ const ManageCategory = () => {
     }
     fetchData();
   }, []);
+
+  //form
+  const [formData, setFormData] = useState({
+    slug: "",
+    name: "",
+    img: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (editAction) {
+      const res = await fetch(`/api/categories/${dataEdit.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ formData }),
+      });
+      if (res.status === 200) {
+        toast.success("Sửa danh mục thành công!!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+
+        setIsModal(false);
+        window.location.reload();
+      }
+    } else {
+      const res = await fetch("/api/categories", {
+        method: "POST",
+        body: JSON.stringify({ formData }),
+      });
+      if (res.status === 200) {
+        toast.success("Thêm danh mục thành công!!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setFormData({
+          slug: "",
+          name: "",
+          img: "",
+        });
+        setIsModal(false);
+        window.location.reload();
+      }
+    }
+  };
+  //
+
   const handleAddCategory = () => {
-    setIsModalVisible(true);
+    setIsModal(true);
   };
 
   const handleDelete = async (id) => {
@@ -48,42 +105,27 @@ const ManageCategory = () => {
     }
   };
 
-  //form
-  const [formData, setFormData] = useState({
-    slug: "",
-    name: "",
-    img: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await fetch("/api/categories", {
-      method: "POST",
-      body: JSON.stringify({ formData }),
+  const handleEdit = async (item) => {
+    setDataEdit(item);
+    setFormData({
+      slug: item.slug,
+      name: item.name,
+      img: item.img || "",
     });
-    if (res.status === 200) {
-      toast.success("Thêm danh mục thành công!!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      setFormData({
-        slug: "",
-        name: "",
-        img: "",
-      });
-      setIsModalVisible(false);
-      window.location.reload();
-    }
+    setEditAction(true);
+    setIsModal(true);
   };
 
-  //
+  const handleClose = () => {
+    setEditAction(false);
+    setIsModal(false);
+    setFormData({
+      slug: "",
+      name: "",
+      img: "",
+    });
+  };
+
   return (
     <div>
       <ToastContainer />
@@ -118,7 +160,10 @@ const ManageCategory = () => {
                 <td className={styles.td}>{item.posts.length}</td>
                 <td className={styles.td}>
                   <div style={{ display: "flex", gap: 20 }}>
-                    <EditOutlined className={styles.actionsBtnEdit} />
+                    <EditOutlined
+                      className={styles.actionsBtnEdit}
+                      onClick={() => handleEdit(item)}
+                    />
                     <DeleteOutlined
                       className={styles.actionsBtnDelete}
                       onClick={() => handleDelete(item.id)}
@@ -127,7 +172,7 @@ const ManageCategory = () => {
                 </td>
               </tr>
             ))}
-            {isModalVisible && (
+            {isModal && (
               <tr>
                 <td className={styles.td}>
                   <input
@@ -160,7 +205,7 @@ const ManageCategory = () => {
                 <td className={styles.td}>
                   <button
                     className={styles.buttonClose}
-                    onClick={() => setIsModalVisible(false)}
+                    onClick={() => handleClose()}
                   >
                     <CloseOutlined />
                   </button>
