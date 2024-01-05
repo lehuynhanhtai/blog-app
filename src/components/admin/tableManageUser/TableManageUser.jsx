@@ -39,6 +39,7 @@ const TableManageUser = () => {
   });
   const [dataEdit, setDataEdit] = useState({});
   const [editAction, setEditAction] = useState(false);
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -169,6 +170,7 @@ const TableManageUser = () => {
           <table className={styles.table}>
             <thead style={{ whiteSpace: "nowrap" }}>
               <tr style={{ textAlign: "justify" }}>
+                <th className={styles.th}>STT</th>
                 <th className={styles.th}>Tên người dùng</th>
                 <th className={styles.th}>Role</th>
                 <th className={styles.th}>Slogan</th>
@@ -183,8 +185,9 @@ const TableManageUser = () => {
             </thead>
 
             <tbody>
-              {data?.map((item) => (
+              {data?.map((item, index) => (
                 <tr key={item.id}>
+                  <td className={styles.td}>{index + 1}</td>
                   <td className={styles.td}>{item.name}</td>
                   <td className={styles.td}>{item.role}</td>
                   <td className={styles.td}>{item.slogan || "null"}</td>
@@ -210,6 +213,7 @@ const TableManageUser = () => {
               ))}
               {isModal && (
                 <tr>
+                  <td className={styles.td}></td>
                   <td className={styles.td}>
                     <input
                       type="text"

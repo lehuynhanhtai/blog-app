@@ -20,6 +20,8 @@ export default function MenuSideBar() {
         </Link>
         {navLink.map(({ id, name, link }) => (
           <Link
+            rel="preload"
+            as={link}
             href={link}
             key={id}
             className={`${pathName === link ? `${styles.active}` : ""} ${

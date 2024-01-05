@@ -83,7 +83,6 @@ const ManageCategory = () => {
     }
   };
   //
-
   const handleAddCategory = () => {
     setIsModal(true);
   };
@@ -144,6 +143,7 @@ const ManageCategory = () => {
         <table className={styles.table}>
           <thead>
             <tr style={{ textAlign: "justify" }}>
+              <th className={styles.th}>STT</th>
               <th className={styles.th}>Tên không dấu</th>
               <th className={styles.th}>Tên danh mục</th>
               <th className={styles.th}>Hình ảnh</th>
@@ -152,8 +152,9 @@ const ManageCategory = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((item) => (
+            {data?.map((item, index) => (
               <tr key={item.id}>
+                <td className={styles.td}>{index + 1}</td>
                 <td className={styles.td}>{item.slug}</td>
                 <td className={styles.td}>{item.name}</td>
                 <td className={styles.td}>{item.img || "null"}</td>
@@ -174,6 +175,7 @@ const ManageCategory = () => {
             ))}
             {isModal && (
               <tr>
+                <td className={styles.td}></td>
                 <td className={styles.td}>
                   <input
                     type="text"
