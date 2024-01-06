@@ -7,12 +7,18 @@ import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import dateFormat, { masks } from "dateformat";
 import {
+  CompressOutlined,
+  DeleteOutlined,
   DislikeOutlined,
+  EditOutlined,
   LikeOutlined,
+  MoreOutlined,
   SmileOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import Picker from "@emoji-mart/react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -32,9 +38,12 @@ const Comment = ({ postSlug }) => {
     `http://localhost:3000/api/comments?postSlug=${postSlug}`,
     fetcher
   );
-  const { status } = useSession();
+  const { status, data: session } = useSession();
   const [desc, setDesc] = useState("");
   const [open, setOpen] = useState(false);
+  const [showOptions, setShowOptions] = useState({});
+  const [showModalItem, setShowModalItem] = useState({});
+  const [descEdit, setDescEdit] = useState("");
   const router = useRouter();
 
   const handleSend = async () => {
@@ -67,8 +76,67 @@ const Comment = ({ postSlug }) => {
     setDesc(desc + emojiObject.native);
   };
 
+  const handleShowMore = (itemId) => {
+    setShowOptions((prevOptions) => ({
+      ...prevOptions,
+      [itemId]: !prevOptions[itemId],
+    }));
+  };
+
+  const handleDeleteComment = async (id) => {
+    const res = await fetch(`/api/comments/${id}`, {
+      method: "DELETE",
+    });
+    if (res.status === 200) {
+      toast.success("Xóa bình luận thành công!!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      mutate();
+      return;
+    }
+    if (res.status !== 200) {
+      toast.warning("Xóa bình luận không thành công!!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
+  };
+
+  const handleEditComment = (item) => {
+    setShowModalItem((prevOptions) => ({
+      ...prevOptions,
+      [item.id]: !prevOptions[item.id],
+    }));
+    setDescEdit(item.desc);
+  };
+
+  const handleConfirmEdit = async (item) => {
+    const res = await fetch(`/api/comments/${item.id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        desc: descEdit,
+      }),
+    });
+    if (res.status === 200) {
+      toast.success("Sửa bình luận thành công!!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setShowModalItem(!showModalItem);
+      setShowOptions(!showOptions);
+      mutate();
+      return;
+    }
+    if (res.status !== 200) {
+      toast.warning("Sửa bình luận không thành công!!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
+  };
+
   return (
     <div id="comments" className={styles.container}>
+      <ToastContainer />
       <h1 className={styles.title}>Bình luận</h1>
       <div className={styles.write}>
         <textarea
@@ -133,6 +201,35 @@ const Comment = ({ postSlug }) => {
                       </span>
                     </div>
                     <p className={styles.desc}>{item.desc}</p>
+                    <p className={styles.modalEdit}>
+                      {showModalItem[item.id] && (
+                        <>
+                          <input
+                            style={{
+                              background: "none",
+                              outline: "none",
+                              border: "none",
+                              color: "#e1cf50",
+                              fontSize: 18,
+                            }}
+                            type="text"
+                            name="descEdit"
+                            value={descEdit}
+                            onChange={(e) => setDescEdit(e.target.value)}
+                          />
+                          <button
+                            style={{
+                              background: "#014848",
+                              color: "#fff",
+                              padding: 3,
+                            }}
+                            onClick={() => handleConfirmEdit(item)}
+                          >
+                            OK!
+                          </button>
+                        </>
+                      )}
+                    </p>
                     <div className={styles.vote}>
                       <div>
                         <LikeOutlined /> <span>1</span>
@@ -142,6 +239,39 @@ const Comment = ({ postSlug }) => {
                       </div>
                     </div>
                   </div>
+                </div>
+                <div className={styles.showMore}>
+                  <MoreOutlined
+                    style={{ fontSize: 20, cursor: "pointer" }}
+                    onClick={() => handleShowMore(item.id)}
+                  />
+                  {showOptions[item.id] && (
+                    <div className={styles.options}>
+                      {session?.user.id !== item.user.id ? (
+                        <span style={{ cursor: "pointer" }}>
+                          <CompressOutlined style={{ color: "orange" }} />
+                          &nbsp; Báo cáo vi phạm
+                        </span>
+                      ) : (
+                        <>
+                          <span
+                            style={{ cursor: "pointer" }}
+                            onClick={() => handleDeleteComment(item.id)}
+                          >
+                            <DeleteOutlined style={{ color: "red" }} /> &nbsp;
+                            Xóa
+                          </span>
+                          <span
+                            style={{ cursor: "pointer" }}
+                            onClick={() => handleEditComment(item)}
+                          >
+                            <EditOutlined style={{ color: "yellow" }} /> &nbsp;
+                            Chỉnh sửa
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

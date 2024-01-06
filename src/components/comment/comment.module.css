@@ -64,6 +64,8 @@
 
 .comment {
   margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .user {
@@ -106,9 +108,30 @@
   margin-top: 15px;
 }
 
-/* @media screen and (max-width: 1024px) {
+.showMore {
+  height: max-content;
+  position: relative;
+  display: none;
 }
-@media screen and (max-width: 768px) {
+
+.comment:hover .showMore {
+  display: block;
 }
-@media screen and (max-width: 640px) {
-} */
+
+.options {
+  position: absolute;
+  right: 10px;
+  white-space: nowrap;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 2px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalEdit {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
