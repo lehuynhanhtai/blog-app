@@ -94,6 +94,8 @@ model Comment {
   id        String   @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
   desc      String
+  report    String?
+  like      Int      @default(0)
   userEmail String
   user      User     @relation(fields: [userEmail], references: [email])
   postSlug  String

@@ -43,7 +43,10 @@ const Comment = ({ postSlug }) => {
   const [open, setOpen] = useState(false);
   const [showOptions, setShowOptions] = useState({});
   const [showModalItem, setShowModalItem] = useState({});
+  const [itemReport, setItemReport] = useState({});
   const [descEdit, setDescEdit] = useState("");
+  const [modalReport, setModalReport] = useState(false);
+  const [descReport, setDescReport] = useState("");
   const router = useRouter();
 
   const handleSend = async () => {
@@ -134,9 +137,69 @@ const Comment = ({ postSlug }) => {
     }
   };
 
+  const handleReport = (item) => {
+    setModalReport(true);
+    setItemReport(item);
+  };
+
+  const handleClose = () => {
+    setModalReport(false);
+  };
+
+  const handleConfirmModal = async () => {
+    const res = await fetch(`/api/comments/${itemReport.id}`, {
+      method: "PUT",
+      body: JSON.stringify({ report: descReport }),
+    });
+
+    if (res.status === 200) {
+      toast.success("Báo cáo vi phạm thành công!!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setModalReport(false);
+      return;
+    }
+
+    if (res.status !== 200) {
+      toast.error("Đã xảy ra lỗi vui lòng thử lại!!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
+  };
+
   return (
     <div id="comments" className={styles.container}>
       <ToastContainer />
+      {modalReport && (
+        <div className={styles.modal}>
+          <div className={styles.overlay}></div>
+          <div className={styles.modalContent}>
+            <h2>Báo cáo vi phạm</h2>
+            <input
+              className={styles.inputModal}
+              type="text"
+              id="slug"
+              placeholder="Nhập nội dung vi phạm..."
+              name="slug"
+              value={descReport}
+              onChange={(e) => setDescReport(e.target.value)}
+            />
+            <div className={styles.buttonGroup}>
+              <button className={styles.closeModal} onClick={handleClose}>
+                Đóng
+              </button>
+              <button
+                className={styles.confirmModal}
+                onClick={handleConfirmModal}
+              >
+                Xác nhận
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h1 className={styles.title}>Bình luận</h1>
       <div className={styles.write}>
         <textarea
@@ -232,10 +295,10 @@ const Comment = ({ postSlug }) => {
                     </p>
                     <div className={styles.vote}>
                       <div>
-                        <LikeOutlined /> <span>1</span>
+                        <LikeOutlined /> <span>{item.like}</span>
                       </div>
                       <div>
-                        <DislikeOutlined /> <span>1</span>
+                        <DislikeOutlined /> <span></span>
                       </div>
                     </div>
                   </div>
@@ -248,7 +311,10 @@ const Comment = ({ postSlug }) => {
                   {showOptions[item.id] && (
                     <div className={styles.options}>
                       {session?.user.id !== item.user.id ? (
-                        <span style={{ cursor: "pointer" }}>
+                        <span
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleReport(item)}
+                        >
                           <CompressOutlined style={{ color: "orange" }} />
                           &nbsp; Báo cáo vi phạm
                         </span>

@@ -28,6 +28,7 @@ export const PUT = async (req, { params }) => {
       },
       data: {
         desc: body.desc,
+        report: body.report,
       },
     });
     return new NextResponse(JSON.stringify(data, { status: 200 }));

@@ -21,7 +21,7 @@
 
 .emoji {
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   top: 40px;
   left: -170px;
 }
@@ -134,4 +134,77 @@
   display: flex;
   justify-content: space-between;
   gap: 30px;
+}
+/* modalreport */
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 2000;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+.modalContent {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  z-index: 3000;
+  color: #000;
+}
+
+.inputModal {
+  width: 100%;
+  height: 30px;
+  border: none;
+  background: none;
+  font-size: 15px;
+  outline: none;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.closeModal {
+  padding: 5px 10px;
+  color: red;
+  border-radius: 20px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.confirmModal {
+  padding: 5px 10px;
+  color: green;
+  margin-left: 10px;
+  border-radius: 20px;
+  border: 1px solid;
+  cursor: pointer;
 }
