@@ -17,6 +17,7 @@ import { app } from "@/utils/firebase";
 import slugify from "slugify";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ChatBot from "@/components/chatbot/ChatBot";
 
 const storage = getStorage(app);
 
@@ -171,6 +172,7 @@ const WritePage = () => {
           </button>
         </div>
       </div>
+      <ChatBot />
       <ToastContainer />
     </>
   );

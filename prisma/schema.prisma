@@ -51,6 +51,7 @@ model User {
   sessions       Session[]
   post           Post[]
   comment        Comment[]
+  chatbot        Chatbot[]
 }
 
 enum Role {
@@ -100,4 +101,13 @@ model Comment {
   user      User     @relation(fields: [userEmail], references: [email])
   postSlug  String
   post      Post     @relation(fields: [postSlug], references: [slug])
+}
+
+model Chatbot {
+  id          String   @id @default(cuid()) @map("_id")
+  createdAt   DateTime @default(now())
+  userMessage String?
+  botMessage  String?
+  userEmail   String
+  user        User     @relation(fields: [userEmail], references: [email])
 }

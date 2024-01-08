@@ -50,7 +50,7 @@ const CardList = (props) => {
     <div id="cardList" className={styles.container}>
       <h1 className={styles.title}>Bài viết gần đây</h1>
       <div className={styles.posts}>
-        {data?.map((item) => {
+        {data?.reverse()?.map((item) => {
           return <Card item={item} key={item.id} />;
         })}
       </div>
