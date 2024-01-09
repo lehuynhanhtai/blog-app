@@ -8,6 +8,7 @@ const navLink = [
   { id: "1", name: "Quản lý danh mục", link: "/dashboard/managecategory" },
   { id: "2", name: "Quản lý người dùng", link: "/dashboard/manageusers" },
   { id: "3", name: "Quản lý bài viết", link: "/dashboard/manageposts" },
+  { id: "4", name: "Quản lý bình luận", link: "/dashboard/managecomments" },
 ];
 
 export default function MenuSideBar() {

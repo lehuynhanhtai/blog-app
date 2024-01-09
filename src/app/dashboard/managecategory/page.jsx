@@ -9,14 +9,12 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import slugify from "slugify";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ManageCategory = () => {
   const [data, setData] = useState();
   const [isModal, setIsModal] = useState(false);
-
   const [editAction, setEditAction] = useState(false);
   const [dataEdit, setDataEdit] = useState({});
 
@@ -82,7 +80,7 @@ const ManageCategory = () => {
       }
     }
   };
-  //
+
   const handleAddCategory = () => {
     setIsModal(true);
   };
