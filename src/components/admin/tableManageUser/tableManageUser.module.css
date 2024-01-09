@@ -15,7 +15,8 @@
 
 .wrapper {
   overflow-x: auto;
-  max-width: 965px;
+  min-width: 965px;
+  max-width: 1130px;
 }
 
 .table {

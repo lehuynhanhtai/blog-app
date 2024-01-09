@@ -13,15 +13,11 @@
   cursor: pointer;
 }
 
-.wrapper {
-  overflow-x: auto;
-  max-width: 1130px;
-}
-
 .table {
   margin-top: 20px;
   border: 1px solid;
   border-collapse: collapse;
+  width: 100%;
   padding: 20px;
 }
 
@@ -32,8 +28,6 @@
 
 .td {
   padding: 10px;
-  width: 100px;
-  white-space: nowrap;
   border: 1px solid;
 }
 
@@ -47,4 +41,20 @@
   font-size: 25px;
   cursor: pointer;
   color: red;
+}
+
+.buttonClose {
+  cursor: pointer;
+  font-size: 24px;
+  color: red;
+  background: none;
+  border: none;
+}
+.buttonAdd {
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 20px;
+  color: green;
+  background: none;
+  border: none;
 }
