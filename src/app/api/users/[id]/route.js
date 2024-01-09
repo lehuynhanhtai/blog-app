@@ -15,7 +15,7 @@ export const GET = async (req, { params }) => {
     });
     return new NextResponse(JSON.stringify(user, { status: 200 }));
   } catch (error) {
-    console.log(err);
+    console.log(error);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
@@ -32,7 +32,7 @@ export const DELETE = async (req, { params }) => {
     });
     return new NextResponse(JSON.stringify(user, { status: 200 }));
   } catch (error) {
-    console.log(err);
+    console.log(error);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
@@ -42,8 +42,17 @@ export const DELETE = async (req, { params }) => {
 export const PUT = async (request, { params }) => {
   const { id } = params;
   const body = await request.json();
-  const { name, role, slogan, email, password, image, backgroundUser } =
-    body.formData;
+  const {
+    name,
+    role,
+    slogan,
+    email,
+    password,
+    image,
+    backgroundUser,
+    birthDay,
+    sex,
+  } = body.formData;
   try {
     const hashPassword = await bcrypt.hash(password, 10);
     const data = await prisma.user.update({
@@ -58,11 +67,13 @@ export const PUT = async (request, { params }) => {
         password: hashPassword,
         image: image,
         backgroundUser: backgroundUser,
+        birthDay: birthDay,
+        sex: sex,
       },
     });
     return new NextResponse(JSON.stringify(data, { status: 200 }));
   } catch (error) {
-    console.log(err);
+    console.log(error);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );

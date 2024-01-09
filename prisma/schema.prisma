@@ -47,6 +47,8 @@ model User {
   emailVerified  DateTime?
   image          String?   @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
   backgroundUser String?
+  birthDay       String?
+  sex            String?
   accounts       Account[]
   sessions       Session[]
   post           Post[]

@@ -105,7 +105,10 @@ const AuthLinks = () => {
               <BookOutlined style={{ marginRight: 10 }} />
               Đã lưu
             </Link>
-            <Link className={styles.linkDropdown} href="/">
+            <Link
+              className={styles.linkDropdown}
+              href={`/editprofile/${data?.user.id}`}
+            >
               <SettingOutlined style={{ marginRight: 10 }} />
               Tùy chỉnh tài khoản
             </Link>

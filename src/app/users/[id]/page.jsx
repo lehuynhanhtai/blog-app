@@ -72,7 +72,10 @@ const SinglePageUser = ({ params }) => {
       <div className={styles.menuInfor}>
         <div className={styles.menu1}>
           {data?.user.name === dataUser.name ? (
-            <Link className={styles.editInfor} href="/">
+            <Link
+              className={styles.editInfor}
+              href={`/editprofile/${data?.user.id}`}
+            >
               Chỉnh sửa trang cá nhân
             </Link>
           ) : (

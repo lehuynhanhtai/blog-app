@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.backgroundUser {
+  min-height: 250px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avartarAndSlogan {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.avartar {
+  border: 1px solid;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slogan {
+  border: 1px solid;
+  min-height: 130px;
+  width: 500px;
+  background: none;
+  color: var(--softTextColor);
+  font-size: 18px;
+  padding: 5px;
+  outline: none;
+}
+
+.ContainerFormInput {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 500px;
+}
+
+.selectCategory {
+  width: 100px;
+  height: 40px;
+  padding: 0 0 0 10px;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid;
+  color: var(--softTextColor);
+  background-color: #111827;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 0 0 10px;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid;
+  color: var(--softTextColor);
+  background-color: #111827;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnSave {
+  padding: 12px 10px;
+  width: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background-color: #283c66;
+}

@@ -36,6 +36,8 @@ const TableManageUser = () => {
     password: "",
     image: "",
     backgroundUser: "",
+    birthDay: "",
+    sex: "",
   });
   const [dataEdit, setDataEdit] = useState({});
   const [editAction, setEditAction] = useState(false);
@@ -72,6 +74,8 @@ const TableManageUser = () => {
           password: "",
           image: "",
           backgroundUser: "",
+          birthDay: "",
+          sex: "",
         });
         mutate();
       }
@@ -144,9 +148,11 @@ const TableManageUser = () => {
       role: item.role,
       slogan: item.slogan || "",
       email: item.email,
-      password: item.password,
+      password: item.password || "",
       image: item.image || "",
       backgroundUser: item.backgroundUser || "",
+      birthDay: item.birthDay || "",
+      sex: item.sex || "",
     });
     setEditAction(true);
     setIsModal(true);
@@ -178,6 +184,8 @@ const TableManageUser = () => {
                 <th className={styles.th}>Mật khẩu</th>
                 <th className={styles.th}>Avatar</th>
                 <th className={styles.th}>Hình nền</th>
+                <th className={styles.th}>Ngày sinh</th>
+                <th className={styles.th}>Giới tính</th>
                 <th className={styles.th}>Bài viết</th>
                 <th className={styles.th}>Bình luận</th>
                 <th className={styles.th}>Actions</th>
@@ -195,6 +203,8 @@ const TableManageUser = () => {
                   <td className={styles.td}>{item.password || "null"}</td>
                   <td className={styles.td}>{item.image || "null"}</td>
                   <td className={styles.td}>{item.backgroundUser || "null"}</td>
+                  <td className={styles.td}>{item.birthDay || "null"}</td>
+                  <td className={styles.td}>{item.sex || "null"}</td>
                   <td className={styles.td}>{item.post.length}</td>
                   <td className={styles.td}>{item.comment.length}</td>
                   <td className={styles.td}>
@@ -277,8 +287,27 @@ const TableManageUser = () => {
                       onChange={handleOnChange}
                     />
                   </td>
+                  <td className={styles.td}>
+                    <input
+                      type="text"
+                      id="birthDay"
+                      name="birthDay"
+                      value={formData.birthDay}
+                      onChange={handleOnChange}
+                    />
+                  </td>
+                  <td className={styles.td}>
+                    <input
+                      type="text"
+                      id="sex"
+                      name="sex"
+                      value={formData.sex}
+                      onChange={handleOnChange}
+                    />
+                  </td>
                   <td className={styles.td}></td>
                   <td className={styles.td}></td>
+
                   <td className={styles.td}>
                     <button
                       className={styles.buttonClose}

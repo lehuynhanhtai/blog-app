@@ -26,7 +26,6 @@ const WritePage = () => {
   const router = useRouter();
   const { status } = useSession();
   const [categories, setCategories] = useState([]);
-
   const [file, setFile] = useState(); // Hinh anh
   const [media, setMedia] = useState(""); // Link URL image
   const [title, setTitle] = useState("");

@@ -11,7 +11,7 @@ export const DELETE = async (req, { params }) => {
     });
     return new NextResponse(JSON.stringify(data, { status: 200 }));
   } catch (error) {
-    console.log(err);
+    console.log(error);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
@@ -33,7 +33,7 @@ export const PUT = async (req, { params }) => {
     });
     return new NextResponse(JSON.stringify(data, { status: 200 }));
   } catch (error) {
-    console.log(err);
+    console.log(error);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
