@@ -12,7 +12,6 @@ import { useSession } from "next-auth/react";
 const SinglePageUser = ({ params }) => {
   const { id } = params;
   const [dataUser, setDataUser] = useState([]);
-  const { post } = dataUser;
   const { data } = useSession();
   useEffect(() => {
     getOneUser(id).then((data) => {
@@ -90,7 +89,7 @@ const SinglePageUser = ({ params }) => {
           </div>
           <q>{dataUser?.slogan}</q>
         </div>
-        <TabsBar dataUser={post} />
+        <TabsBar dataUser={dataUser} id={id} />
       </div>
     </div>
   );

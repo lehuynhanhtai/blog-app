@@ -8,12 +8,15 @@ import {
 } from "@ant-design/icons";
 import styles from "./stickyBar.module.css";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { FacebookIcon, TwitterIcon, TwitterShareButton } from "react-share";
 
 const StickyBar = ({ dataPost, postSlug }) => {
   const [display, setDisplay] = useState(false);
   const [votes, setVotes] = useState(dataPost.votes);
+  const currentPage = window.location.href;
+  const [displayShare, setDisplayShare] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,7 +95,22 @@ const StickyBar = ({ dataPost, postSlug }) => {
             />
             <p style={{ marginTop: 15 }}>{dataPost?.comments.length}</p>
           </div>
-          <ShareAltOutlined className={styles.icon} />
+          <ShareAltOutlined
+            className={styles.icon}
+            style={{ position: "relative" }}
+            onClick={() => setDisplayShare(!displayShare)}
+          />
+          {displayShare && (
+            <div className={styles.iconSocial}>
+              <FacebookIcon size={30} />
+              <TwitterShareButton url={currentPage} title={dataPost.title}>
+                <TwitterIcon
+                  size={30}
+                  onClick={() => setDisplayShare(!displayShare)}
+                />
+              </TwitterShareButton>
+            </div>
+          )}
         </div>
       )}
     </>

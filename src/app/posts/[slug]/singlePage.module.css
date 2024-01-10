@@ -1,5 +1,5 @@
 .container {
-  padding: 0 200px;
+  padding: 0 330px;
   position: relative;
 }
 
@@ -61,7 +61,8 @@
 }
 
 .imageContainer {
-  min-height: 700px;
+  min-height: 600px;
+  max-height: 700px;
   position: relative;
 }
 
@@ -102,7 +103,7 @@
 }
 @media screen and (max-width: 640px) {
   .imageContainer {
-    min-height: 450px;
+    min-height: 370px;
   }
   .title {
     font-size: 36px;

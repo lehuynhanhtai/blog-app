@@ -297,9 +297,6 @@ const Comment = ({ postSlug }) => {
                       <div>
                         <LikeOutlined /> <span>{item.like}</span>
                       </div>
-                      <div>
-                        <DislikeOutlined /> <span></span>
-                      </div>
                     </div>
                   </div>
                 </div>

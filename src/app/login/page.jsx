@@ -5,6 +5,9 @@ import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { FacebookFilled, GoogleCircleFilled } from "@ant-design/icons";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const LoginPage = () => {
   const { status } = useSession();
   const router = useRouter();
@@ -26,17 +29,23 @@ const LoginPage = () => {
     }
   }, [status, router, storedRedirect]);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    signIn("credentials", {
+    const res = await signIn("credentials", {
       ...data,
       redirect: false,
     });
-    router.push("/");
+    if (res.status === 401) {
+      toast.warning("Tài khoản hoặc mật khẩu không đúng, vui lòng thử lại", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
   };
 
   return (
-    <>
+    <div>
+      <ToastContainer />
       <div className={styles.container}>
         <h1 style={{ marginTop: 10, marginBottom: 20 }}>Đăng nhập</h1>
         <form className={styles.form} onSubmit={handleLogin}>
@@ -99,7 +108,7 @@ const LoginPage = () => {
           </Link>{" "}
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

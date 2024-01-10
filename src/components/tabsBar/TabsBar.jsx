@@ -4,15 +4,17 @@ import { useSearchParams } from "next/navigation";
 import styles from "./tabs.module.css";
 import Image from "next/image";
 import dateFormat from "dateformat";
-import { EyeOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EyeOutlined, MoreOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { bouncy } from "ldrs";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "next-auth/react";
 bouncy.register();
 
 const navTabs = [
   { id: "1", name: "Bài viết", link: "createdPosts" },
   { id: "2", name: "Series", link: "series" },
-  { id: "3", name: "Đã lưu", Link: "saved" },
 ];
 
 export default function TabsBar(props) {
@@ -20,7 +22,9 @@ export default function TabsBar(props) {
   const selectorTab = searchParams.get("tab") || "createdPosts";
   const [visible, setVisible] = useState(3);
   const [loading, setLoading] = useState(false);
-  const { dataUser } = props;
+  const [optionsCard, setOptionCard] = useState(false);
+  const { data: session } = useSession();
+  const { dataUser, id } = props;
 
   const handleLoadMore = () => {
     setLoading(true);
@@ -28,6 +32,30 @@ export default function TabsBar(props) {
       setVisible((prevValue) => prevValue + 3);
       setLoading(false);
     }, 2000);
+  };
+  const handleOptions = (item) => {
+    setOptionCard((prevOptions) => ({
+      ...prevOptions,
+      [item.id]: !prevOptions[item.id],
+    }));
+  };
+  const handleDeleteCard = async (item) => {
+    const res = await fetch(`/api/popularposts/${item.id}`, {
+      method: "DELETE",
+    });
+    if (res.status === 200) {
+      toast.success("Xóa thành công", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setOptionCard(!optionsCard);
+      return;
+    }
+    if (res.status !== 200) {
+      toast.warning("Có lỗi xãy ra vui lòng thử lại", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
   };
 
   return (
@@ -51,7 +79,7 @@ export default function TabsBar(props) {
           {selectorTab === "createdPosts" && (
             <>
               <div className={styles.cards}>
-                {dataUser?.slice(0, visible).map((item) => (
+                {dataUser?.post?.slice(0, visible).map((item) => (
                   <div className={styles.card} key={item.id}>
                     <Link
                       href={`/posts/${item.slug}`}
@@ -71,6 +99,23 @@ export default function TabsBar(props) {
                         />
                       )}
                     </Link>
+                    {session?.user.id !== id ? (
+                      <></>
+                    ) : (
+                      <div className={styles.action}>
+                        <MoreOutlined onClick={() => handleOptions(item)} />
+                        {optionsCard[item.id] && (
+                          <div
+                            className={styles.options}
+                            onClick={() => handleDeleteCard(item)}
+                          >
+                            <DeleteOutlined style={{ color: "red" }} />
+                            <span>Xóa bài viết</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
                     <h2 className={styles.cardTitle}>
                       <Link href={`/posts/${item.slug}`}>{item.title}</Link>
                     </h2>
@@ -93,7 +138,7 @@ export default function TabsBar(props) {
                 </div>
               )}
 
-              {dataUser?.length > visible && !loading && (
+              {dataUser?.post?.length > visible && !loading && (
                 <div
                   onClick={handleLoadMore}
                   disabled={loading}
@@ -107,6 +152,7 @@ export default function TabsBar(props) {
         </section>
         <section>{selectorTab === "series" && <p>tab content 2</p>}</section>
       </div>
+      <ToastContainer />
     </div>
   );
 }
