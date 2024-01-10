@@ -1,0 +1,40 @@
+.sessionCreate {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.create {
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.inputCreateRoom {
+  width: 400px;
+  height: 50px;
+  background-color: var(--softBg);
+  color: var(--textColor);
+  outline: none;
+  font-size: 18px;
+  border: 1px solid;
+  padding-left: 20px;
+  border-radius: 30px;
+}
+
+.btnCreate {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--softBg);
+  color: var(--textColor);
+  font-size: 20px;
+  border: 1px solid;
+  height: 50px;
+  border-radius: 30px;
+  padding: 15px;
+  cursor: pointer;
+}

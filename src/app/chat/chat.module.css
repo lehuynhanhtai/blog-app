@@ -1,0 +1,40 @@
+.join {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.joinRoom {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.inputJoinRoom {
+  width: 400px;
+  height: 50px;
+  background-color: var(--softBg);
+  color: var(--textColor);
+  outline: none;
+  font-size: 18px;
+  border: 1px solid;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  padding-left: 20px;
+}
+
+.btnJoin {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--softBg);
+  color: var(--textColor);
+  font-size: 20px;
+  border: 1px solid;
+  height: 50px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding: 0 15px;
+  cursor: pointer;
+}

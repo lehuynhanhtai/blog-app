@@ -56,6 +56,9 @@ export const authOptions = {
         where: {
           email: session.user.email,
         },
+        include: {
+          chatRoom: true,
+        },
       });
       user = inforUser;
 

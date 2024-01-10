@@ -66,18 +66,18 @@ export const POST = async (req) => {
   return new StreamingTextResponse(stream);
 };
 
-// export const GET = async () => {
-//   try {
-//     const dataMessage = await prisma.chatbot.findMany({
-//       include: {
-//         user: true,
-//       },
-//     });
-//     return new NextResponse(JSON.stringify(dataMessage, { status: 200 }));
-//   } catch (error) {
-//     console.log(error);
-//     return new NextResponse(
-//       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
-//     );
-//   }
-// };
+export const GET = async () => {
+  try {
+    const dataMessage = await prisma.chatbot.findMany({
+      include: {
+        user: true,
+      },
+    });
+    return new NextResponse(JSON.stringify(dataMessage, { status: 200 }));
+  } catch (error) {
+    console.log(error);
+    return new NextResponse(
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+    );
+  }
+};

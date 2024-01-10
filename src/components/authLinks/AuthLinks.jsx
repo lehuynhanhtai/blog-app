@@ -5,13 +5,13 @@ import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import {
-  BookOutlined,
   FormOutlined,
   LogoutOutlined,
   MenuOutlined,
   SettingOutlined,
   SnippetsOutlined,
   SolutionOutlined,
+  WechatOutlined,
 } from "@ant-design/icons";
 
 const AuthLinks = () => {
@@ -101,9 +101,9 @@ const AuthLinks = () => {
               <SnippetsOutlined style={{ marginRight: 10 }} />
               Nháp của tôi
             </Link>
-            <Link className={styles.linkDropdown} href="/">
-              <BookOutlined style={{ marginRight: 10 }} />
-              Đã lưu
+            <Link className={styles.linkDropdown} href="/chat">
+              <WechatOutlined style={{ marginRight: 10 }} />
+              Chat
             </Link>
             <Link
               className={styles.linkDropdown}

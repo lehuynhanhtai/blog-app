@@ -38,14 +38,14 @@ model Session {
 }
 
 model User {
-  id             String    @id @default(cuid()) @map("_id")
+  id             String     @id @default(cuid()) @map("_id")
   name           String?
-  role           Role      @default(USER)
+  role           Role       @default(USER)
   slogan         String?
-  email          String    @unique
+  email          String     @unique
   password       String?
   emailVerified  DateTime?
-  image          String?   @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
+  image          String?    @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
   backgroundUser String?
   birthDay       String?
   sex            String?
@@ -54,6 +54,23 @@ model User {
   post           Post[]
   comment        Comment[]
   chatbot        Chatbot[]
+  chatRoom       Chatroom[]
+}
+
+model Chatroom {
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  roomName  String
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+}
+
+model Message {
+  id         String   @id @default(cuid()) @map("_id")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  text       String
+  chatRoomId String
 }
 
 enum Role {
