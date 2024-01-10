@@ -6,12 +6,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { bouncy } from "ldrs";
 import { UserAddOutlined } from "@ant-design/icons";
+import SearchInput from "@/components/searchInput/SearchInput";
+import SearchUsers from "@/components/searchUser/SearchUser";
 
 bouncy.register();
 
 const User = () => {
   const [data, setData] = useState();
-  const [visible, setVisible] = useState(2);
+  const [visible, setVisible] = useState(4);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -34,6 +36,8 @@ const User = () => {
         <h1>NHỮNG TÁC GIẢ NỔI BẬT</h1>
         <h3>Những thành viên hoạt động tích cực và có nhiều bài viết hay</h3>
       </div>
+
+      <SearchUsers getSearchResults={(results) => setData(results)} />
 
       {data?.slice(0, visible).map((item) => (
         <div className={styles.itemUser} key={item.id}>
