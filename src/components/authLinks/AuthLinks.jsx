@@ -62,9 +62,9 @@ const AuthLinks = () => {
         <div className={styles.menuDropdown}>
           <div className={styles.userProf}>
             <div className={styles.imageContainerProf}>
-              {data?.user.image && (
+              {data?.user?.image && (
                 <Image
-                  src={data?.user.image}
+                  src={data?.user?.image}
                   alt=""
                   priority={true}
                   fill

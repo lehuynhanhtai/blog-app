@@ -65,7 +65,13 @@ const TableManageCategories = () => {
     } else {
       const res = await fetch("/api/categories", {
         method: "POST",
-        body: JSON.stringify({ formData }),
+        body: JSON.stringify({
+          formData: {
+            slug: slugify(formData.name, { lower: true }),
+            name: formData.name,
+            img: formData.img,
+          },
+        }),
       });
       if (res.status === 200) {
         toast.success("Thêm danh mục thành công!!", {
@@ -176,13 +182,13 @@ const TableManageCategories = () => {
               <tr>
                 <td className={styles.td}></td>
                 <td className={styles.td}>
-                  {/* <input
+                  <input
                     type="text"
                     id="slug"
                     name="slug"
-                    value={formData.slug}
+                    value={slugify(formData.name, { lower: true })}
                     onChange={handleChange}
-                  /> */}
+                  />
                 </td>
                 <td className={styles.td}>
                   <input
