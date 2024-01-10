@@ -38,3 +38,9 @@
   padding: 0 15px;
   cursor: pointer;
 }
+
+.listRoom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

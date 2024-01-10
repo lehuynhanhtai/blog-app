@@ -2,15 +2,14 @@
 import { useRouter } from "next/navigation";
 import styles from "./createRoom.module.css";
 import { useState } from "react";
-import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "next-auth/react";
 
 const CreateRoom = () => {
   const router = useRouter();
   const [roomName, setName] = useState("");
   const { data: session } = useSession();
-  console.log(session);
   const handleCreateRoom = async () => {
     if (!roomName) {
       toast.warning("Hãy nhập tên phòng", {
@@ -28,6 +27,7 @@ const CreateRoom = () => {
     });
 
     if (res.status === 200) {
+      alert("Tạo thành công");
       const roomId = await res.json();
       router.push(`/room/${roomId.id}`);
     }
@@ -61,7 +61,6 @@ const CreateRoom = () => {
             <span>Xác nhận</span>
           </button>
         </div>
-        <div>aaaa</div>
       </div>
     </div>
   );
