@@ -1,5 +1,9 @@
 .container {
   flex: 5;
+  min-height: 950px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {

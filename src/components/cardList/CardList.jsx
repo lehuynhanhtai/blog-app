@@ -48,11 +48,13 @@ const CardList = (props) => {
 
   return (
     <div id="cardList" className={styles.container}>
-      <h1 className={styles.title}>Bài viết gần đây</h1>
-      <div className={styles.posts}>
-        {data?.reverse()?.map((item) => {
-          return <Card item={item} key={item.id} />;
-        })}
+      <div>
+        <h1 className={styles.title}>Bài viết gần đây</h1>
+        <div className={styles.posts}>
+          {data?.reverse()?.map((item) => {
+            return <Card item={item} key={item.id} />;
+          })}
+        </div>
       </div>
       <div className={styles.pagination}>
         <button
