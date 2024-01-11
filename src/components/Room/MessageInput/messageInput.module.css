@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  gap: 10px;
+}
+.input {
+  border-radius: 10px;
+  background: #262c3a;
+  color: #fff;
+  max-height: 50px;
+  outline: none;
+}
+
+.icon {
+  font-size: 30px;
+  margin-right: 10px;
+}

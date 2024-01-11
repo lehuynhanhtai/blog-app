@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+}
+.sideBar {
+  flex: 2;
+  border: 1px solid #aaa;
+  padding-left: 10px;
+}
+
+.chatContainer {
+  flex: 7;
+}

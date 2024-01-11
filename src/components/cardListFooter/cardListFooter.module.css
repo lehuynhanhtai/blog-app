@@ -2,6 +2,8 @@
   width: 100%;
 }
 .itemSwiper {
+  margin-top: 10px;
+  margin-bottom: 20px;
   min-height: 390px;
   min-width: 380px;
 }

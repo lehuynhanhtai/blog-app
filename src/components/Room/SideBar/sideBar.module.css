@@ -1,0 +1,28 @@
+.leader {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+.imageContainer {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  aspect-ratio: 1/1;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.inforLeader {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sessionMember {
+  margin-top: 20px;
+}

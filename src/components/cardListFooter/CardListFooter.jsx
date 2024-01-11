@@ -28,7 +28,7 @@ const CardListFooter = () => {
 
   return (
     <>
-      <h1 style={{ marginBottom: 20, marginTop: 20 }}>Bạn có thể quan tâm</h1>
+      <h1 style={{ marginBottom: 30, marginTop: 30 }}>Bạn có thể quan tâm</h1>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}

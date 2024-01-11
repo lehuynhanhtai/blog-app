@@ -99,7 +99,17 @@ const TableManageUser = () => {
         toast.success("Thêm người dùng thành công!!", {
           position: toast.POSITION.TOP_RIGHT,
         });
+        setFormData({
+          name: "",
+          role: "",
+          slogan: "",
+          email: "",
+          password: "",
+          image: "",
+          backgroundUser: "",
+        });
         setIsModal(false);
+
         mutate();
       }
     }

@@ -1,0 +1,20 @@
+.container {
+  border-left: 1px solid;
+  min-height: calc(100vh - 355px);
+}
+
+.idRoom {
+  border: 1px solid;
+  padding: 10px;
+  text-align: end;
+}
+
+.wrapper {
+  overflow-y: auto;
+  min-height: calc(100vh - 210px);
+  max-height: calc(100vh - 210px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid;
+}
