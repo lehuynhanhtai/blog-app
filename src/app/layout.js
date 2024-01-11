@@ -8,6 +8,7 @@ import BackToTop from "@/components/btnTopPage/BackToTop";
 import AuthProvider from "@/providers/AuthProvider";
 import { Suspense } from "react";
 import Loading from "./loading";
+import "react-toastify/dist/ReactToastify.css";
 
 const font = Open_Sans({ subsets: ["latin"] });
 

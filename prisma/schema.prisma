@@ -55,24 +55,38 @@ model User {
   comment        Comment[]
   chatbot        Chatbot[]
   chatRoom       Chatroom[]
+  // message        Message[]
+  members        Members[]
 }
 
 model Chatroom {
-  id        String   @id @default(cuid()) @map("_id")
-  createdAt DateTime @default(now())
-  img       String?  @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
+  id        String    @id @default(cuid()) @map("_id")
+  createdAt DateTime  @default(now())
+  img       String?   @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
   roomName  String
   userEmail String
-  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  user      User      @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  // messages  Message[]
+  members   Members[]
 }
 
-model Message {
-  id         String   @id @default(cuid()) @map("_id")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  text       String
-  chatRoomId String
+model Members {
+  id        String   @id @default(cuid()) @map("_id")
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  roomId    String
+  room      Chatroom @relation(fields: [roomId], references: [id], onDelete: Cascade)
 }
+
+// model Message {
+//   id         String   @id @default(cuid()) @map("_id")
+//   createdAt  DateTime @default(now())
+//   text       String?
+//   chatroomId String
+//   chatroom   Chatroom @relation(fields: [chatroomId], references: [id])
+//   userEmail  String
+//   user       User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+// }
 
 enum Role {
   USER

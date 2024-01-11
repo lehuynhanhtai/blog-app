@@ -7,22 +7,7 @@ import ListRoom from "@/components/ChatRoom/ListRoom/ListRoom";
 const Chat = () => {
   return (
     <div>
-      <div className={styles.join}>
-        <h2>Tham gia phòng chat</h2>
-        <div className={styles.joinRoom}>
-          <input
-            type="text"
-            id="idName"
-            name="idName"
-            placeholder="Nhập mã phòng"
-            className={styles.inputJoinRoom}
-          />
-          <button className={styles.btnJoin}>
-            <span>Tham gia</span>
-            <CodepenOutlined style={{ fontSize: 30 }} />
-          </button>
-        </div>
-      </div>
+      <JoinRoom />
       <CreateRoom />
       <div className={styles.listRoom}>
         <ListRoom />
