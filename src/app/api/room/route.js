@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const data = await prisma.chatroom.findMany({});
+    const data = await prisma.chatroom.findMany({
+      include: {
+        members: true,
+      },
+    });
     return new NextResponse(JSON.stringify(data, { status: 200 }));
   } catch (error) {
     console.log(error);

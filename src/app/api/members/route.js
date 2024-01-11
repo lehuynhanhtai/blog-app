@@ -15,8 +15,6 @@ export const GET = async () => {
 
 export const POST = async (request) => {
   const body = await request.json();
-
-  console.log(body);
   try {
     const existingRoom = await prisma.chatroom.findUnique({
       where: {
