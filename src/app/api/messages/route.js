@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
-    const data = await prisma.members.findMany({
+    const data = await prisma.messages.findMany({
       include: {
         user: true,
       },
@@ -17,30 +17,17 @@ export const GET = async () => {
   }
 };
 
-export const POST = async (request) => {
-  const body = await request.json();
+export const POST = async (req) => {
+  const body = await req.json();
   try {
-    const existingRoom = await prisma.chatroom.findUnique({
-      where: {
-        id: body.roomId,
-      },
-    });
-
-    if (!existingRoom) {
-      return new NextResponse(
-        JSON.stringify({ message: "Không tồn tại phòng chat" }),
-        { status: 500 }
-      );
-    }
-
-    const newMember = await prisma.members.create({
+    const data = await prisma.messages.create({
       data: {
+        text: body.text,
+        chatroomId: body.chatroomId,
         userEmail: body.userEmail,
-        roomId: body.roomId,
       },
     });
-
-    return new NextResponse(JSON.stringify(newMember, { status: 200 }));
+    return new NextResponse(JSON.stringify(data, { status: 200 }));
   } catch (error) {
     console.log(error);
     return new NextResponse(

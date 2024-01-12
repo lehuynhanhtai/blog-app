@@ -4,17 +4,9 @@
 }
 
 .idRoom {
-  border: 1px solid;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  border-top: 1px solid;
   padding: 10px;
   text-align: end;
-}
-
-.wrapper {
-  overflow-y: auto;
-  min-height: calc(100vh - 210px);
-  max-height: calc(100vh - 210px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-right: 1px solid;
 }

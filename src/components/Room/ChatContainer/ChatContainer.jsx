@@ -1,19 +1,15 @@
 import { BorderlessTableOutlined } from "@ant-design/icons";
-import MessageInput from "../MessageInput/MessageInput";
 import Messages from "../Messages/Messages";
 import styles from "./chatContainer.module.css";
 
-const ChatContainer = () => {
+const ChatContainer = (id) => {
   return (
     <div className={styles.container}>
       <div className={styles.idRoom}>
         {" "}
-        123544asdasd <BorderlessTableOutlined />
+        {id.id} <BorderlessTableOutlined />
       </div>
-      <div className={styles.wrapper}>
-        <Messages />
-      </div>
-      <MessageInput />
+      <Messages id={id} />
     </div>
   );
 };

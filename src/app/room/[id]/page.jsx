@@ -2,14 +2,15 @@ import ChatContainer from "@/components/Room/ChatContainer/ChatContainer";
 import SideBar from "@/components/Room/SideBar/SideBar";
 import styles from "./room.module.css";
 
-const Room = () => {
+const Room = ({ params }) => {
+  const { id } = params;
   return (
     <div className={styles.wrapper}>
       <div className={styles.sideBar}>
-        <SideBar />
+        <SideBar id={id} />
       </div>
       <div className={styles.chatContainer}>
-        <ChatContainer />
+        <ChatContainer id={id} />
       </div>
     </div>
   );

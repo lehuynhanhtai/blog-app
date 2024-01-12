@@ -6,6 +6,7 @@ export const GET = async () => {
     const data = await prisma.chatroom.findMany({
       include: {
         members: true,
+        messages: true,
       },
     });
     return new NextResponse(JSON.stringify(data, { status: 200 }));

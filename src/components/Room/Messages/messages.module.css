@@ -1,6 +1,11 @@
-.container {
+.containerMessages {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  min-height: calc(100vh - 210px);
+  max-height: calc(100vh - 210px);
+  border-right: 1px solid;
+  max-width: 100vw;
 }
 
 .messageUser {
@@ -22,4 +27,29 @@
 .image {
   object-fit: cover;
   border-radius: 50%;
+}
+
+.messageInput {
+  display: flex;
+  gap: 10px;
+  border-right: 1px solid;
+}
+.input {
+  border-radius: 10px;
+  background: #262c3a;
+  color: #fff;
+  max-height: 50px;
+  outline: none;
+  overflow-y: hidden;
+}
+
+.icon {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.inforUserMessges {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

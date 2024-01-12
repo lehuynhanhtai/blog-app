@@ -2,6 +2,7 @@
   margin-top: 20px;
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 .imageContainer {
   width: 60px;
@@ -20,7 +21,7 @@
 .inforLeader {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .sessionMember {
